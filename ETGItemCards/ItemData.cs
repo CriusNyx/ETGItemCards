@@ -4,18 +4,36 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/// <summary>
+/// Data for the items used in this mod
+/// </summary>
 public class ItemData
 {
+    /// <summary>
+    /// The id of the item
+    /// </summary>
     public readonly int id;
+    /// <summary>
+    /// The text of the item
+    /// </summary>
     public readonly string text;
 
+    /// <summary>
+    /// Create a new ItemData with the specified ID and Text
+    /// </summary>
+    /// <param name="id"></param>
+    /// <param name="text"></param>
     public ItemData(int id, string text)
     {
         this.id = id;
         this.text = text;
     }
 
-    private static ItemData[] items = new ItemData[]{new ItemData(99, @"
+    /// <summary>
+    /// This dictionary contains most known items in the game.
+    /// It has been scraped from GungeonGod.com
+    /// </summary>
+    public static Dictionary<int, ItemData> Items { get; private set; } = new Dictionary<int, ItemData>(){{ 99, new ItemData(99, @"
 Rusty Sidearm
 ""Still Works. Mostly.""
 ItemID: 99
@@ -32,8 +50,8 @@ Range: 16
 Knockback: 10
 Spread: 7°
 * 
-"),
-new ItemData(86, @"
+") },
+{ 86, new ItemData(86, @"
 Marine Sidearm
 ""Always With You""
 ItemID: 86
@@ -50,8 +68,8 @@ Range: 18
 Knockback: 12
 Spread: 5°
 * 
-"),
-new ItemData(89, @"
+") },
+{ 89, new ItemData(89, @"
 Rogue Special
 ""Underhanded And Efficient""
 ItemID: 89
@@ -69,8 +87,8 @@ Range: 13
 Knockback: 6
 Spread: 10°
 * 
-"),
-new ItemData(80, @"
+") },
+{ 80, new ItemData(80, @"
 Budget Revolver
 ""Affordable Arms""
 ItemID: 80
@@ -87,8 +105,8 @@ Range: 18
 Knockback: 10
 Spread: 10°
 * 
-"),
-new ItemData(24, @"
+") },
+{ 24, new ItemData(24, @"
 Dart Gun
 ""Sticky""
 ItemID: 24
@@ -105,8 +123,8 @@ Range: 25
 Knockback: 2
 Spread: 5°
 * 
-"),
-new ItemData(88, @"
+") },
+{ 88, new ItemData(88, @"
 Robot's Right Hand
 ""Built To Kill""
 ItemID: 88
@@ -123,8 +141,8 @@ Range: 20
 Knockback: 10
 Spread: 7°
 * robots right hand
-"),
-new ItemData(417, @"
+") },
+{ 417, new ItemData(417, @"
 Blasphemy
 ""To The Point""
 ItemID: 417
@@ -145,8 +163,8 @@ Range: Infinite
 Knockback: 10
 Spread: 10°
 * 
-"),
-new ItemData(197, @"
+") },
+{ 197, new ItemData(197, @"
 Pea Shooter
 ""Baby's First Gun""
 ItemID: 197
@@ -163,8 +181,8 @@ Range: 20
 Knockback: 3
 Spread: 10°
 * 
-"),
-new ItemData(56, @"
+") },
+{ 56, new ItemData(56, @"
 38 Special
 ""For The Inquisitive""
 ItemID: 56
@@ -180,8 +198,8 @@ Range: 35
 Knockback: 10
 Spread: 5°
 * 
-"),
-new ItemData(378, @"
+") },
+{ 378, new ItemData(378, @"
 Derringer
 ""One Last Trick""
 ItemID: 378
@@ -197,8 +215,8 @@ Range: 60
 Knockback: 30
 Spread: 6°
 * 
-"),
-new ItemData(83, @"
+") },
+{ 83, new ItemData(83, @"
 Unfinished Gun
 ""Still Warm""
 ItemID: 83
@@ -214,8 +232,8 @@ Range: 35
 Knockback: 6
 Spread: 15°
 * 
-"),
-new ItemData(79, @"
+") },
+{ 79, new ItemData(79, @"
 Makarov
 ""The People's Gun""
 ItemID: 79
@@ -231,8 +249,8 @@ Range: 60
 Knockback: 10
 Spread: 4°
 * 
-"),
-new ItemData(30, @"
+") },
+{ 30, new ItemData(30, @"
 M1911
 ""Classic""
 ItemID: 30
@@ -249,8 +267,8 @@ Range: 60
 Knockback: 30
 Spread: 6°
 * 
-"),
-new ItemData(38, @"
+") },
+{ 38, new ItemData(38, @"
 Magnum
 ""5 Shots Or 6?""
 ItemID: 38
@@ -267,8 +285,8 @@ Range: 60
 Knockback: 30
 Spread: 7°
 * 
-"),
-new ItemData(62, @"
+") },
+{ 62, new ItemData(62, @"
 Colt 1851
 ""You Dig""
 ItemID: 62
@@ -284,8 +302,8 @@ Range: ∞
 Knockback: 10
 Spread: None
 * 
-"),
-new ItemData(50, @"
+") },
+{ 50, new ItemData(50, @"
 SAA
 ""Exhilarating Reload Time""
 ItemID: 50
@@ -302,8 +320,8 @@ Range: 1000
 Knockback: 14
 Spread: 0°
 * 
-"),
-new ItemData(223, @"
+") },
+{ 223, new ItemData(223, @"
 Cold 45
 ""Shatterday Night Special""
 ItemID: 223
@@ -320,8 +338,8 @@ Range: 35
 Knockback: 10
 Spread: 6°
 * 
-"),
-new ItemData(97, @"
+") },
+{ 97, new ItemData(97, @"
 Polaris
 ""Storied""
 ItemID: 97
@@ -340,8 +358,8 @@ Range: 1000
 Knockback: 30
 Spread: 5°
 * 
-"),
-new ItemData(47, @"
+") },
+{ 47, new ItemData(47, @"
 Jolter
 "".95 Caliber""
 ItemID: 47
@@ -358,8 +376,8 @@ Range: 25
 Knockback: 50
 Spread: 10°
 * 
-"),
-new ItemData(23, @"
+") },
+{ 23, new ItemData(23, @"
 Dungeon Eagle
 ""Caw!""
 ItemID: 23
@@ -376,8 +394,8 @@ Range: 60
 Knockback: 10
 Spread: 10°
 * 
-"),
-new ItemData(182, @"
+") },
+{ 182, new ItemData(182, @"
 Grey Mauser
 ""Silent and Deadly""
 ItemID: 182
@@ -395,8 +413,8 @@ Range: n/a
 Knockback: n/a
 Spread: n/a°
 * 
-"),
-new ItemData(464, @"
+") },
+{ 464, new ItemData(464, @"
 Shellegun
 ""Circle Of Death""
 ItemID: 464
@@ -414,8 +432,8 @@ Range: 30
 Knockback: 22
 Spread: 5°
 * 
-"),
-new ItemData(9, @"
+") },
+{ 9, new ItemData(9, @"
 Dueling Pistol
 ""Ricochet""
 ItemID: 9
@@ -432,8 +450,8 @@ Range: 1000
 Knockback: 15
 Spread: 8°
 * 
-"),
-new ItemData(53, @"
+") },
+{ 53, new ItemData(53, @"
 AU Gun
 ""Some Assembly Required""
 ItemID: 53
@@ -449,8 +467,8 @@ Range: 1000
 Knockback: 10
 Spread: 0°
 * golden gun, gold gun
-"),
-new ItemData(157, @"
+") },
+{ 157, new ItemData(157, @"
 Big Iron
 ""Heavy""
 ItemID: 157
@@ -466,8 +484,8 @@ Range: 16
 Knockback: 10
 Spread: 4°
 * 
-"),
-new ItemData(337, @"
+") },
+{ 337, new ItemData(337, @"
 Composite Gun
 ""Undetectable""
 ItemID: 337
@@ -483,8 +501,8 @@ Range: 1000
 Knockback: 10
 Spread: 0°
 * 
-"),
-new ItemData(275, @"
+") },
+{ 275, new ItemData(275, @"
 Flare Gun
 ""Over Here""
 ItemID: 275
@@ -501,8 +519,8 @@ Range: 1000
 Knockback: 35
 Spread: 6°
 * 
-"),
-new ItemData(35, @"
+") },
+{ 35, new ItemData(35, @"
 Smiley's Revolver
 ""All Smiles""
 ItemID: 35
@@ -519,8 +537,8 @@ Range: 60
 Knockback: 30
 Spread: 6°
 * 
-"),
-new ItemData(22, @"
+") },
+{ 22, new ItemData(22, @"
 Shades's Revolver
 ""Someone Loses An Eye""
 ItemID: 22
@@ -536,8 +554,8 @@ Range: 60
 Knockback: 30
 Spread: 6°
 * 
-"),
-new ItemData(51, @"
+") },
+{ 51, new ItemData(51, @"
 Regular Shotgun
 ""Cocked and Loaded""
 ItemID: 51
@@ -553,8 +571,8 @@ Range: 60
 Knockback: 30
 Spread: 10°
 * 
-"),
-new ItemData(93, @"
+") },
+{ 93, new ItemData(93, @"
 Old Goldie
 ""For The Discerning""
 ItemID: 93
@@ -571,8 +589,8 @@ Range: 60
 Knockback: 30
 Spread: 5°
 * 
-"),
-new ItemData(202, @"
+") },
+{ 202, new ItemData(202, @"
 Sawed-Off
 ""No Butts About It""
 ItemID: 202
@@ -589,8 +607,8 @@ Range: 60
 Knockback: 30
 Spread: 8°
 * 
-"),
-new ItemData(1, @"
+") },
+{ 1, new ItemData(1, @"
 Winchester
 ""Better Than A Box Of Roses""
 ItemID: 1
@@ -606,8 +624,8 @@ Range: 60
 Knockback: 30
 Spread: 7°
 * 
-"),
-new ItemData(406, @"
+") },
+{ 406, new ItemData(406, @"
 Rattler
 ""Snakes On A Gun""
 ItemID: 406
@@ -624,8 +642,8 @@ Range: n/a
 Knockback: n/a
 Spread: n/a°
 * 
-"),
-new ItemData(82, @"
+") },
+{ 82, new ItemData(82, @"
 Elephant Gun
 ""Shoots Elephants""
 ItemID: 82
@@ -642,8 +660,8 @@ Range: n/a
 Knockback: n/a
 Spread: n/a°
 * 
-"),
-new ItemData(175, @"
+") },
+{ 175, new ItemData(175, @"
 Tangler
 ""Get Wrecktangled""
 ItemID: 175
@@ -660,8 +678,8 @@ Range: n/a
 Knockback: n/a
 Spread: n/a°
 * 
-"),
-new ItemData(55, @"
+") },
+{ 55, new ItemData(55, @"
 Void Shotgun
 ""CQC""
 ItemID: 55
@@ -677,8 +695,8 @@ Range: 60
 Knockback: 30
 Spread: 0°
 * 
-"),
-new ItemData(365, @"
+") },
+{ 365, new ItemData(365, @"
 Mass Shotgun
 ""My Favorite Gun""
 ItemID: 365
@@ -695,8 +713,8 @@ Range: 60
 Knockback: 30
 Spread: 0°
 * 
-"),
-new ItemData(143, @"
+") },
+{ 143, new ItemData(143, @"
 Shotgun Full of Hate
 ""Hate Is Power!""
 ItemID: 143
@@ -713,8 +731,8 @@ Range: 60
 Knockback: 30
 Spread: 14°
 * 
-"),
-new ItemData(379, @"
+") },
+{ 379, new ItemData(379, @"
 Shotgun Full of Love
 ""Kill With Kindness""
 ItemID: 379
@@ -731,8 +749,8 @@ Range: 60
 Knockback: 30
 Spread: 14°
 * 
-"),
-new ItemData(347, @"
+") },
+{ 347, new ItemData(347, @"
 Shotgrub
 ""No Worries!""
 ItemID: 347
@@ -749,8 +767,8 @@ Range: 60
 Knockback: 30
 Spread: 0°
 * 
-"),
-new ItemData(231, @"
+") },
+{ 231, new ItemData(231, @"
 Gilded Hydra
 ""Heads Up!""
 ItemID: 231
@@ -770,8 +788,8 @@ Range: 60
 Knockback: 30
 Spread: 0°
 * 
-"),
-new ItemData(122, @"
+") },
+{ 122, new ItemData(122, @"
 Blunderbuss
 ""Shoots Anything""
 ItemID: 122
@@ -788,8 +806,8 @@ Range: 1000
 Knockback: 25
 Spread: 20°
 * 
-"),
-new ItemData(123, @"
+") },
+{ 123, new ItemData(123, @"
 Pulse Cannon
 ""Time Of Death...""
 ItemID: 123
@@ -805,8 +823,8 @@ Range: n/a
 Knockback: n/a
 Spread: n/a°
 * 
-"),
-new ItemData(404, @"
+") },
+{ 404, new ItemData(404, @"
 Siren
 ""Mershotgun""
 ItemID: 404
@@ -824,8 +842,8 @@ Range: 60
 Knockback: 30
 Spread: 0°
 * 
-"),
-new ItemData(329, @"
+") },
+{ 329, new ItemData(329, @"
 Zilla Shotgun
 ""Quadruple the fun!""
 ItemID: 329
@@ -843,8 +861,8 @@ Range: 1000
 Knockback: 26
 Spread: 20°
 * 
-"),
-new ItemData(225, @"
+") },
+{ 225, new ItemData(225, @"
 Ice Breaker
 ""Never Let Go""
 ItemID: 225
@@ -863,8 +881,8 @@ Range: 60
 Knockback: 30
 Spread: 0°
 * 
-"),
-new ItemData(151, @"
+") },
+{ 151, new ItemData(151, @"
 The Membrane
 ""Green Or Yellow?""
 ItemID: 151
@@ -881,8 +899,8 @@ Range: n/a
 Knockback: n/a
 Spread: n/a°
 * 
-"),
-new ItemData(346, @"
+") },
+{ 346, new ItemData(346, @"
 Huntsman
 ""Axes Of Evil""
 ItemID: 346
@@ -900,8 +918,8 @@ Range: n/a
 Knockback: n/a
 Spread: n/a°
 * 
-"),
-new ItemData(18, @"
+") },
+{ 18, new ItemData(18, @"
 Blooper
 ""Close Your Bloop""
 ItemID: 18
@@ -919,8 +937,8 @@ Range: 60
 Knockback: 30
 Spread: 0°
 * 
-"),
-new ItemData(8, @"
+") },
+{ 8, new ItemData(8, @"
 Bow
 ""Hold Fire To Charge""
 ItemID: 8
@@ -937,8 +955,8 @@ Range: 1000
 Knockback: 25
 Spread: 0°
 * 
-"),
-new ItemData(200, @"
+") },
+{ 200, new ItemData(200, @"
 Charmed Bow
 ""<3-----<<<""
 ItemID: 200
@@ -956,8 +974,8 @@ Range: n/a
 Knockback: n/a
 Spread: n/a°
 * 
-"),
-new ItemData(12, @"
+") },
+{ 12, new ItemData(12, @"
 Crossbow
 ""The Original""
 ItemID: 12
@@ -976,8 +994,8 @@ Range: 1000
 Knockback: 25
 Spread: 7°
 * 
-"),
-new ItemData(4, @"
+") },
+{ 4, new ItemData(4, @"
 Sticky Crossbow
 ""Reload, Explode""
 ItemID: 4
@@ -994,8 +1012,8 @@ Range: n/a
 Knockback: n/a
 Spread: n/a°
 * 
-"),
-new ItemData(126, @"
+") },
+{ 126, new ItemData(126, @"
 Shotbow
 ""A Teleporter Accident""
 ItemID: 126
@@ -1011,8 +1029,8 @@ Range: 1000
 Knockback: 25
 Spread: 5°
 * 
-"),
-new ItemData(381, @"
+") },
+{ 381, new ItemData(381, @"
 Triple Crossbow
 ""3 > 1""
 ItemID: 381
@@ -1029,8 +1047,8 @@ Range: n/a
 Knockback: n/a
 Spread: n/a°
 * 
-"),
-new ItemData(52, @"
+") },
+{ 52, new ItemData(52, @"
 Crescent Crossbow
 ""Moon Shot""
 ItemID: 52
@@ -1047,8 +1065,8 @@ Range: 1000
 Knockback: 20
 Spread: 0°
 * 
-"),
-new ItemData(210, @"
+") },
+{ 210, new ItemData(210, @"
 Gunbow
 ""Failed Experiment""
 ItemID: 210
@@ -1064,8 +1082,8 @@ Range: 1000
 Knockback: 25
 Spread: 0°
 * 
-"),
-new ItemData(31, @"
+") },
+{ 31, new ItemData(31, @"
 Klobbe
 ""Everyone's Favorite""
 ItemID: 31
@@ -1081,8 +1099,8 @@ Range: 1000
 Knockback: 1
 Spread: 20°
 * 
-"),
-new ItemData(43, @"
+") },
+{ 43, new ItemData(43, @"
 Machine Pistol
 ""Rapid Fire""
 ItemID: 43
@@ -1098,8 +1116,8 @@ Range: 16
 Knockback: 6
 Spread: 10°
 * 
-"),
-new ItemData(2, @"
+") },
+{ 2, new ItemData(2, @"
 Thompson Sub-Machinegun
 ""Myeah, See!""
 ItemID: 2
@@ -1116,8 +1134,8 @@ Range: n/a
 Knockback: n/a
 Spread: n/a°
 * 
-"),
-new ItemData(15, @"
+") },
+{ 15, new ItemData(15, @"
 AK-47
 ""Accept No Substitutes""
 ItemID: 15 & 221
@@ -1133,8 +1151,8 @@ Range: 1000
 Knockback: 9
 Spread: 4°
 * 
-"),
-new ItemData(95, @"
+") },
+{ 95, new ItemData(95, @"
 AKEY-47
 ""Unlocked And Loaded!""
 ItemID: 95
@@ -1152,8 +1170,8 @@ Range: 1000
 Knockback: 9
 Spread: 4°
 * 
-"),
-new ItemData(96, @"
+") },
+{ 96, new ItemData(96, @"
 M16
 ""Underslung""
 ItemID: 96
@@ -1171,8 +1189,8 @@ Range: 1000
 Knockback: 11
 Spread: 7°
 * 
-"),
-new ItemData(6, @"
+") },
+{ 6, new ItemData(6, @"
 Zorgun
 ""Don't Push The Red Button""
 ItemID: 6
@@ -1189,8 +1207,8 @@ Range: 1000
 Knockback: 9
 Spread: 5°
 * 
-"),
-new ItemData(29, @"
+") },
+{ 29, new ItemData(29, @"
 VertebraeK-47
 ""Nervous Yet?""
 ItemID: 29
@@ -1207,8 +1225,8 @@ Range: 1000
 Knockback: 6
 Spread: 5°
 * 
-"),
-new ItemData(94, @"
+") },
+{ 94, new ItemData(94, @"
 MAC10
 ""$#!^@ Never End""
 ItemID: 94
@@ -1224,8 +1242,8 @@ Range: 1000
 Knockback: 3
 Spread: 10°
 * 
-"),
-new ItemData(17, @"
+") },
+{ 17, new ItemData(17, @"
 Heck Blaster
 ""Whoa, Nelly""
 ItemID: 17
@@ -1242,8 +1260,8 @@ Range: 14
 Knockback: 3
 Spread: 8°
 * 
-"),
-new ItemData(98, @"
+") },
+{ 98, new ItemData(98, @"
 Patriot
 ""Gun Eater""
 ItemID: 98
@@ -1261,8 +1279,8 @@ Range: 1000
 Knockback: 15
 Spread: 1°
 * 
-"),
-new ItemData(84, @"
+") },
+{ 84, new ItemData(84, @"
 Vulcan Cannon
 ""Boundless Slaughter""
 ItemID: 84
@@ -1279,8 +1297,8 @@ Range: 1000
 Knockback: 15
 Spread: 12°
 * 
-"),
-new ItemData(207, @"
+") },
+{ 207, new ItemData(207, @"
 Plague Pistol
 ""Chemical Warfare""
 ItemID: 207
@@ -1299,8 +1317,8 @@ Range: 25
 Knockback: 13
 Spread: 5°
 * 
-"),
-new ItemData(401, @"
+") },
+{ 401, new ItemData(401, @"
 Gungine
 ""12 Cylinder""
 ItemID: 401
@@ -1319,8 +1337,8 @@ Range: 1000
 Knockback: 15
 Spread: 6°
 * 
-"),
-new ItemData(146, @"
+") },
+{ 146, new ItemData(146, @"
 Dragunfire
 ""Roar""
 ItemID: 146
@@ -1338,8 +1356,8 @@ Range: 1000
 Knockback: 27
 Spread: 7°
 * 
-"),
-new ItemData(49, @"
+") },
+{ 49, new ItemData(49, @"
 Sniper Rifle
 ""Scope Creep""
 ItemID: 49
@@ -1355,8 +1373,8 @@ Range: n/a
 Knockback: n/a
 Spread: n/a°
 * 
-"),
-new ItemData(5, @"
+") },
+{ 5, new ItemData(5, @"
 A.W.P.
 ""Noob Cannon""
 ItemID: 5
@@ -1373,8 +1391,8 @@ Range: 1000
 Knockback: 25
 Spread: 5°
 * awp
-"),
-new ItemData(25, @"
+") },
+{ 25, new ItemData(25, @"
 M1
 ""Bolt Action""
 ItemID: 25
@@ -1390,8 +1408,8 @@ Range: 60
 Knockback: 25
 Spread: 2°
 * 
-"),
-new ItemData(181, @"
+") },
+{ 181, new ItemData(181, @"
 Winchester Rifle
 ""Guns and Deviltry.""
 ItemID: 181
@@ -1407,8 +1425,8 @@ Range: 1000
 Knockback: 9
 Spread: 5°
 * 
-"),
-new ItemData(327, @"
+") },
+{ 327, new ItemData(327, @"
 Corsair
 ""Plot A Course""
 ItemID: 327
@@ -1424,8 +1442,8 @@ Range: 1000
 Knockback: 25
 Spread: 5°
 * 
-"),
-new ItemData(358, @"
+") },
+{ 358, new ItemData(358, @"
 Railgun
 ""Calibrating""
 ItemID: 358
@@ -1442,8 +1460,8 @@ Range: n/a
 Knockback: n/a
 Spread: n/a°
 * 
-"),
-new ItemData(370, @"
+") },
+{ 370, new ItemData(370, @"
 Prototype Railgun
 ""DANGER: HIGH VOLTAGE""
 ItemID: 370
@@ -1459,8 +1477,8 @@ Range: n/a
 Knockback: n/a
 Spread: n/a°
 * 
-"),
-new ItemData(32, @"
+") },
+{ 32, new ItemData(32, @"
 Void Marshal
 ""Acquired Under The Table""
 ItemID: 32
@@ -1476,8 +1494,8 @@ Range: 35
 Knockback: 10
 Spread: 7°
 * 
-"),
-new ItemData(81, @"
+") },
+{ 81, new ItemData(81, @"
 Deck4rd
 ""Unicorn Of Handguns""
 ItemID: 81
@@ -1493,8 +1511,8 @@ Range: 1000
 Knockback: 22
 Spread: 10°
 * 
-"),
-new ItemData(184, @"
+") },
+{ 184, new ItemData(184, @"
 The Judge
 ""Hot Shot""
 ItemID: 184
@@ -1510,8 +1528,8 @@ Range: 1000
 Knockback: 9
 Spread: 7°
 * 
-"),
-new ItemData(57, @"
+") },
+{ 57, new ItemData(57, @"
 Alien Sidearm
 ""Shield Breaker""
 ItemID: 57
@@ -1528,8 +1546,8 @@ Range: n/a
 Knockback: n/a
 Spread: n/a°
 * 
-"),
-new ItemData(142, @"
+") },
+{ 142, new ItemData(142, @"
 RUBE-ADYNE Prototype
 ""It Never Quits""
 ItemID: 142
@@ -1545,8 +1563,8 @@ Range: 60
 Knockback: 10
 Spread: 5°
 * rube adyne
-"),
-new ItemData(128, @"
+") },
+{ 128, new ItemData(128, @"
 RUBE-ADYNE MK.II
 ""Polished Product""
 ItemID: 128
@@ -1563,8 +1581,8 @@ Range: 35
 Knockback: 10
 Spread: 7°
 * 
-"),
-new ItemData(394, @"
+") },
+{ 394, new ItemData(394, @"
 Mine Cutter
 ""Safety First""
 ItemID: 394
@@ -1581,8 +1599,8 @@ Range: 60
 Knockback: 30
 Spread: 7°
 * 
-"),
-new ItemData(58, @"
+") },
+{ 58, new ItemData(58, @"
 Void Core Assault Rifle
 ""Rapid Fire""
 ItemID: 58
@@ -1598,8 +1616,8 @@ Range: 20
 Knockback: 15
 Spread: 3°
 * 
-"),
-new ItemData(383, @"
+") },
+{ 383, new ItemData(383, @"
 Flash Ray
 ""Ah Ahhh!""
 ItemID: 383
@@ -1617,8 +1635,8 @@ Range: 1000
 Knockback: 4
 Spread: 10°
 * 
-"),
-new ItemData(334, @"
+") },
+{ 334, new ItemData(334, @"
 Wind Up Gun
 ""Charge It""
 ItemID: 334
@@ -1636,8 +1654,8 @@ Range: 35
 Knockback: 10
 Spread: 8°
 * wind-up gun
-"),
-new ItemData(91, @"
+") },
+{ 91, new ItemData(91, @"
 H4mmer
 ""Many Bullets""
 ItemID: 91
@@ -1654,8 +1672,8 @@ Range: 1000
 Knockback: 6
 Spread: 7°
 * 
-"),
-new ItemData(360, @"
+") },
+{ 360, new ItemData(360, @"
 Snakemaker
 ""SSSSSSSSSSS""
 ItemID: 360
@@ -1672,8 +1690,8 @@ Range: 1000
 Knockback: 10
 Spread: 0°
 * snek
-"),
-new ItemData(229, @"
+") },
+{ 229, new ItemData(229, @"
 Hegemony Carbine
 ""All The Same""
 ItemID: 229
@@ -1691,8 +1709,8 @@ Range: ?
 Knockback: ?
 Spread: ?°
 * 
-"),
-new ItemData(3, @"
+") },
+{ 3, new ItemData(3, @"
 Screecher
 ""Cover Your Ears!""
 ItemID: 3
@@ -1709,8 +1727,8 @@ Range: n/a
 Knockback: n/a
 Spread: n/a°
 * 
-"),
-new ItemData(156, @"
+") },
+{ 156, new ItemData(156, @"
 Laser Lotus
 ""Level 5""
 ItemID: 156
@@ -1727,8 +1745,8 @@ Range: 1000
 Knockback: 26
 Spread: 5°
 * 
-"),
-new ItemData(59, @"
+") },
+{ 59, new ItemData(59, @"
 Hegemony Rifle
 ""So Precise""
 ItemID: 59
@@ -1744,8 +1762,8 @@ Range: 15
 Knockback: 15
 Spread: 13°
 * 
-"),
-new ItemData(345, @"
+") },
+{ 345, new ItemData(345, @"
 Fightsabre
 ""Heresy""
 ItemID: 345
@@ -1762,8 +1780,8 @@ Range: 50
 Knockback: 10
 Spread: 8°
 * fight sabre, fight sabre, fightsaber
-"),
-new ItemData(230, @"
+") },
+{ 230, new ItemData(230, @"
 Helix
 ""Splice 'n' Dice""
 ItemID: 230
@@ -1780,8 +1798,8 @@ Range: 35
 Knockback: 10
 Spread: 7°
 * 
-"),
-new ItemData(54, @"
+") },
+{ 54, new ItemData(54, @"
 Laser Rifle
 ""Blast Off!""
 ItemID: 54
@@ -1797,8 +1815,8 @@ Range: 60
 Knockback: 16
 Spread: 5°
 * 
-"),
-new ItemData(178, @"
+") },
+{ 178, new ItemData(178, @"
 Crestfaller
 ""Cold Reality""
 ItemID: 178
@@ -1814,8 +1832,8 @@ Range: n/a
 Knockback: n/a
 Spread: n/a°
 * 
-"),
-new ItemData(13, @"
+") },
+{ 13, new ItemData(13, @"
 Thunderclap
 ""Lightning In A Bullet""
 ItemID: 13
@@ -1831,8 +1849,8 @@ Range: 1000
 Knockback: 10
 Spread: 5°
 * 
-"),
-new ItemData(328, @"
+") },
+{ 328, new ItemData(328, @"
 Charge Shot
 ""Hold To Fire""
 ItemID: 328
@@ -1848,8 +1866,8 @@ Range: 1000
 Knockback: 25
 Spread: 5°
 * 
-"),
-new ItemData(274, @"
+") },
+{ 274, new ItemData(274, @"
 Dark Marker
 ""Big Bang""
 ItemID: 274
@@ -1866,8 +1884,8 @@ Range: 1000
 Knockback: 20
 Spread: 0°
 * 
-"),
-new ItemData(228, @"
+") },
+{ 228, new ItemData(228, @"
 Particulator
 ""Strange Matter""
 ItemID: 228
@@ -1883,8 +1901,8 @@ Range: 10
 Knockback: 8
 Spread: 0°
 * 
-"),
-new ItemData(330, @"
+") },
+{ 330, new ItemData(330, @"
 The Emperor
 ""Electric Terror""
 ItemID: 330
@@ -1900,8 +1918,8 @@ Range: 50
 Knockback: 10
 Spread: 7°
 * 
-"),
-new ItemData(39, @"
+") },
+{ 39, new ItemData(39, @"
 RPG
 ""Leveled Up""
 ItemID: 39
@@ -1918,8 +1936,8 @@ Range: 90
 Knockback: 10
 Spread: 5°
 * 
-"),
-new ItemData(19, @"
+") },
+{ 19, new ItemData(19, @"
 Grenade Launcher
 ""Fwomp!""
 ItemID: 19
@@ -1935,8 +1953,8 @@ Range: 20
 Knockback: 20
 Spread: 4°
 * 
-"),
-new ItemData(92, @"
+") },
+{ 92, new ItemData(92, @"
 Stinger
 ""Drone Warfare""
 ItemID: 92
@@ -1953,8 +1971,8 @@ Range: 60
 Knockback: 10
 Spread: 1°
 * 
-"),
-new ItemData(129, @"
+") },
+{ 129, new ItemData(129, @"
 Com4nd0
 ""You're Fired""
 ItemID: 129
@@ -1972,8 +1990,8 @@ Range: 90
 Knockback: 10
 Spread: 5°
 * 
-"),
-new ItemData(372, @"
+") },
+{ 372, new ItemData(372, @"
 RC Rocket
 ""Avoid User Error""
 ItemID: 372
@@ -1990,8 +2008,8 @@ Range: 200
 Knockback: 10
 Spread: 1°
 * 
-"),
-new ItemData(16, @"
+") },
+{ 16, new ItemData(16, @"
 Yari Launcher
 ""Hell. Yes.""
 ItemID: 16
@@ -2008,8 +2026,8 @@ Range: 90
 Knockback: 30
 Spread: 45°
 * 
-"),
-new ItemData(332, @"
+") },
+{ 332, new ItemData(332, @"
 Lil' Bomber
 ""ReFuse To Lose!""
 ItemID: 332
@@ -2027,8 +2045,8 @@ Range: 1000
 Knockback: 35
 Spread: 6°
 * lil bomber
-"),
-new ItemData(180, @"
+") },
+{ 180, new ItemData(180, @"
 Grasschopper
 ""Noisy""
 ItemID: 180
@@ -2045,8 +2063,8 @@ Range: 18
 Knockback: 22
 Spread: 5°
 * 
-"),
-new ItemData(61, @"
+") },
+{ 61, new ItemData(61, @"
 Bundle of Wands
 ""Dark Arts""
 ItemID: 61
@@ -2063,8 +2081,8 @@ Range: n/a
 Knockback: n/a
 Spread: n/a°
 * 
-"),
-new ItemData(395, @"
+") },
+{ 395, new ItemData(395, @"
 Staff of Firepower
 ""Missing Link""
 ItemID: 395
@@ -2082,8 +2100,8 @@ Range: 1000
 Knockback: 12
 Spread: 7°
 * 
-"),
-new ItemData(145, @"
+") },
+{ 145, new ItemData(145, @"
 Witch Pistol
 ""Spells Your Doom""
 ItemID: 145
@@ -2099,8 +2117,8 @@ Range: n/a
 Knockback: n/a
 Spread: n/a°
 * 
-"),
-new ItemData(385, @"
+") },
+{ 385, new ItemData(385, @"
 Hexagun
 ""Light Fantastic""
 ItemID: 385
@@ -2116,8 +2134,8 @@ Range: 1000
 Knockback: 25
 Spread: 0°
 * 
-"),
-new ItemData(384, @"
+") },
+{ 384, new ItemData(384, @"
 Phoenix
 ""Reborn In Flame""
 ItemID: 384
@@ -2134,8 +2152,8 @@ Range: 25
 Knockback: 13
 Spread: 3°
 * 
-"),
-new ItemData(198, @"
+") },
+{ 198, new ItemData(198, @"
 Gunslinger's Ashes
 ""Spirit, Willing""
 ItemID: 198
@@ -2152,8 +2170,8 @@ Range: n/a
 Knockback: n/a
 Spread: n/a°
 * 
-"),
-new ItemData(199, @"
+") },
+{ 199, new ItemData(199, @"
 Luxin Cannon
 ""Omnichrome""
 ItemID: 199
@@ -2170,8 +2188,8 @@ Range: n/a
 Knockback: n/a
 Spread: n/a°
 * 
-"),
-new ItemData(338, @"
+") },
+{ 338, new ItemData(338, @"
 Gunther
 ""Jealous Weapon""
 ItemID: 338
@@ -2191,8 +2209,8 @@ Range: 50
 Knockback: 20
 Spread: 10°
 * 
-"),
-new ItemData(100, @"
+") },
+{ 100, new ItemData(100, @"
 Unicorn Horn
 ""Fires Friendship""
 ItemID: 100
@@ -2210,8 +2228,8 @@ Range: 30
 Knockback: 45
 Spread: 0°
 * 
-"),
-new ItemData(390, @"
+") },
+{ 390, new ItemData(390, @"
 Cobalt Hammer
 ""Break Stuff""
 ItemID: 390
@@ -2230,8 +2248,8 @@ Range: 1000
 Knockback: 80
 Spread: 0°
 * 
-"),
-new ItemData(387, @"
+") },
+{ 387, new ItemData(387, @"
 Frost Giant
 ""Icy Grasp""
 ItemID: 387
@@ -2249,8 +2267,8 @@ Range: 30
 Knockback: 10
 Spread: 12°
 * 
-"),
-new ItemData(362, @"
+") },
+{ 362, new ItemData(362, @"
 Bullet Bore
 ""Mind Muncher""
 ItemID: 362
@@ -2268,8 +2286,8 @@ Range: 1000
 Knockback: 8
 Spread: 5°
 * 
-"),
-new ItemData(357, @"
+") },
+{ 357, new ItemData(357, @"
 Cat Claw
 ""Kneadle Your Foes!""
 ItemID: 357
@@ -2286,8 +2304,8 @@ Range: 1000
 Knockback: 2
 Spread: 5°
 * 
-"),
-new ItemData(36, @"
+") },
+{ 36, new ItemData(36, @"
 Megahand
 ""-P-""
 ItemID: 36
@@ -2303,8 +2321,8 @@ Range: 1000
 Knockback: 8
 Spread: 0°
 * 
-"),
-new ItemData(60, @"
+") },
+{ 60, new ItemData(60, @"
 Demon Head
 ""Wanged""
 ItemID: 60
@@ -2321,8 +2339,8 @@ Range: 40
 Knockback: 30
 Spread: 5°
 * 
-"),
-new ItemData(41, @"
+") },
+{ 41, new ItemData(41, @"
 Heroine
 ""Charge Beam Active""
 ItemID: 41
@@ -2339,8 +2357,8 @@ Range: 1000
 Knockback: 10
 Spread: 0°
 * 
-"),
-new ItemData(333, @"
+") },
+{ 333, new ItemData(333, @"
 Mutation
 ""Didn't Need Two Anyway""
 ItemID: 333
@@ -2357,8 +2375,8 @@ Range: 20
 Knockback: 50
 Spread: 5°
 * 
-"),
-new ItemData(125, @"
+") },
+{ 125, new ItemData(125, @"
 Flame Hand
 ""2D6 + Int Mod""
 ItemID: 125
@@ -2375,8 +2393,8 @@ Range: 1000
 Knockback: 35
 Spread: 0°
 * 
-"),
-new ItemData(186, @"
+") },
+{ 186, new ItemData(186, @"
 Machine Fist
 ""Avalanche Of Bullets""
 ItemID: 186
@@ -2394,8 +2412,8 @@ Range: 1000
 Knockback: 15
 Spread: 6°
 * 
-"),
-new ItemData(402, @"
+") },
+{ 402, new ItemData(402, @"
 Snowballer
 ""May Contain Rocks""
 ItemID: 402
@@ -2412,8 +2430,8 @@ Range: 35
 Knockback: 10
 Spread: 10°
 * 
-"),
-new ItemData(479, @"
+") },
+{ 479, new ItemData(479, @"
 Super Meat Gun
 ""Very Fast""
 ItemID: 479
@@ -2431,8 +2449,8 @@ Range: 1000
 Knockback: 10
 Spread: 5°
 * 
-"),
-new ItemData(393, @"
+") },
+{ 393, new ItemData(393, @"
 Anvillain
 ""Practical And Safe""
 ItemID: 393
@@ -2448,8 +2466,8 @@ Range: 1000
 Knockback: 8
 Spread: 5°
 * 
-"),
-new ItemData(196, @"
+") },
+{ 196, new ItemData(196, @"
 Fossilized Gun
 ""Proof That Guns Once Existed""
 ItemID: 196
@@ -2467,8 +2485,8 @@ Range: 20
 Knockback: 40
 Spread: 0°
 * 
-"),
-new ItemData(87, @"
+") },
+{ 87, new ItemData(87, @"
 Gamma Ray
 ""Mean Green""
 ItemID: 87
@@ -2486,8 +2504,8 @@ Range: 50
 Knockback: 10
 Spread: 0°
 * 
-"),
-new ItemData(40, @"
+") },
+{ 40, new ItemData(40, @"
 Freeze Ray
 ""Ice To Meet You""
 ItemID: 40
@@ -2505,8 +2523,8 @@ Range: 30
 Knockback: 10
 Spread: 0°
 * 
-"),
-new ItemData(331, @"
+") },
+{ 331, new ItemData(331, @"
 Science Cannon
 ""Charged Particles""
 ItemID: 331
@@ -2524,8 +2542,8 @@ Range: 500
 Knockback: 35
 Spread: 0°
 * 
-"),
-new ItemData(121, @"
+") },
+{ 121, new ItemData(121, @"
 Disintegrator
 ""Return To Dust""
 ItemID: 121
@@ -2541,8 +2559,8 @@ Range: 50
 Knockback: 0
 Spread: 0°
 * 
-"),
-new ItemData(179, @"
+") },
+{ 179, new ItemData(179, @"
 Proton Backpack
 ""Crossing Streams""
 ItemID: 179
@@ -2559,8 +2577,8 @@ Range: 90
 Knockback: 30
 Spread: 0°
 * 
-"),
-new ItemData(10, @"
+") },
+{ 10, new ItemData(10, @"
 Mega Douser
 ""Contents Under Pressure""
 ItemID: 10
@@ -2576,8 +2594,8 @@ Range: 20
 Knockback: 40
 Spread: 0°
 * 
-"),
-new ItemData(208, @"
+") },
+{ 208, new ItemData(208, @"
 Plunger
 ""Take Your Best Shot!""
 ItemID: 208
@@ -2596,8 +2614,8 @@ Range: 20
 Knockback: 40
 Spread: 0°
 * 
-"),
-new ItemData(107, @"
+") },
+{ 107, new ItemData(107, @"
 Raiden Coil
 ""Shoot Em' Up""
 ItemID: 107
@@ -2614,8 +2632,8 @@ Range: 30
 Knockback: 10
 Spread: 5°
 * 
-"),
-new ItemData(20, @"
+") },
+{ 20, new ItemData(20, @"
 Moonscraper
 ""Beeeeoooowwww!""
 ItemID: 20
@@ -2631,8 +2649,8 @@ Range: 50
 Knockback: 20
 Spread: 5°
 * 
-"),
-new ItemData(7, @"
+") },
+{ 7, new ItemData(7, @"
 Barrel
 ""Nothin' Easier""
 ItemID: 7
@@ -2648,8 +2666,8 @@ Range: 1000
 Knockback: 13
 Spread: 7°
 * 
-"),
-new ItemData(363, @"
+") },
+{ 363, new ItemData(363, @"
 Trick Gun
 ""Reload To Transform""
 ItemID: 363
@@ -2665,8 +2683,8 @@ Range: n/a
 Knockback: n/a
 Spread: n/a°
 * 
-"),
-new ItemData(28, @"
+") },
+{ 28, new ItemData(28, @"
 Mailbox
 ""Special Delivery""
 ItemID: 28
@@ -2684,8 +2702,8 @@ Range: 1000
 Knockback: 10
 Spread: 10°
 * 
-"),
-new ItemData(26, @"
+") },
+{ 26, new ItemData(26, @"
 Nail Gun
 ""Pest Control""
 ItemID: 26
@@ -2701,8 +2719,8 @@ Range: 12
 Knockback: 8
 Spread: 10°
 * 
-"),
-new ItemData(27, @"
+") },
+{ 27, new ItemData(27, @"
 Light Gun
 ""Third-Party""
 ItemID: 27
@@ -2720,8 +2738,8 @@ Range: 60
 Knockback: 30
 Spread: 5°
 * 
-"),
-new ItemData(339, @"
+") },
+{ 339, new ItemData(339, @"
 Mahoguny
 ""100% Organic""
 ItemID: 339
@@ -2737,8 +2755,8 @@ Range: 30
 Knockback: 20
 Spread: 0°
 * 
-"),
-new ItemData(445, @"
+") },
+{ 445, new ItemData(445, @"
 The Scrambler
 ""Bullet Or The Gun?""
 ItemID: 445
@@ -2755,8 +2773,8 @@ Range: n/a
 Knockback: n/a
 Spread: n/a°
 * 
-"),
-new ItemData(154, @"
+") },
+{ 154, new ItemData(154, @"
 Trashcannon
 ""Take It Out!""
 ItemID: 154
@@ -2775,8 +2793,8 @@ Range: 1000
 Knockback: 20
 Spread: 5°
 * 
-"),
-new ItemData(130, @"
+") },
+{ 130, new ItemData(130, @"
 Glacier
 ""Refill Your Trays""
 ItemID: 130
@@ -2793,8 +2811,8 @@ Range: 35
 Knockback: 8
 Spread: 5°
 * 
-"),
-new ItemData(477, @"
+") },
+{ 477, new ItemData(477, @"
 Origuni
 ""Thousand Cuts""
 ItemID: 477
@@ -2810,8 +2828,8 @@ Range: n/a
 Knockback: n/a
 Spread: n/a°
 * 
-"),
-new ItemData(152, @"
+") },
+{ 152, new ItemData(152, @"
 The Kiln
 ""Fires Pots""
 ItemID: 152
@@ -2827,8 +2845,8 @@ Range: n/a
 Knockback: n/a
 Spread: n/a°
 * 
-"),
-new ItemData(45, @"
+") },
+{ 45, new ItemData(45, @"
 Skull Splitter
 ""Hard Headed""
 ItemID: 45
@@ -2845,8 +2863,8 @@ Range: n/a
 Knockback: n/a
 Spread: n/a°
 * 
-"),
-new ItemData(341, @"
+") },
+{ 341, new ItemData(341, @"
 Buzzkill
 ""Sawed On!""
 ItemID: 341
@@ -2862,8 +2880,8 @@ Range: 1000
 Knockback: 10
 Spread: 5°
 * 
-"),
-new ItemData(33, @"
+") },
+{ 33, new ItemData(33, @"
 Tear Jerker
 ""Q_Q""
 ItemID: 33
@@ -2881,8 +2899,8 @@ Range: n/a
 Knockback: n/a
 Spread: n/a°
 * 
-"),
-new ItemData(90, @"
+") },
+{ 90, new ItemData(90, @"
 Eye of the Beholster
 ""What A Beauty!""
 ItemID: 90
@@ -2899,8 +2917,8 @@ Range: 1000
 Knockback: 4
 Spread: 4°
 * 
-"),
-new ItemData(292, @"
+") },
+{ 292, new ItemData(292, @"
 Molotov Launcher
 ""Exactly What You Think""
 ItemID: 292
@@ -2917,8 +2935,8 @@ Range: 35
 Knockback: 13
 Spread: 5°
 * 
-"),
-new ItemData(153, @"
+") },
+{ 153, new ItemData(153, @"
 Shock Rifle
 ""Zap""
 ItemID: 153
@@ -2934,8 +2952,8 @@ Range: 1000
 Knockback: 20
 Spread: 5°
 * 
-"),
-new ItemData(369, @"
+") },
+{ 369, new ItemData(369, @"
 Bait Launcher
 ""Meat Your Maker""
 ItemID: 369
@@ -2952,8 +2970,8 @@ Range: n/a
 Knockback: n/a
 Spread: n/a°
 * 
-"),
-new ItemData(376, @"
+") },
+{ 376, new ItemData(376, @"
 Brick Breaker
 ""Wrong Kind Of Mortar""
 ItemID: 376
@@ -2971,8 +2989,8 @@ Range: n/a
 Knockback: n/a
 Spread: n/a°
 * 
-"),
-new ItemData(380, @"
+") },
+{ 380, new ItemData(380, @"
 Betrayer's Shield
 ""Actually A Gun""
 ItemID: 380
@@ -2990,8 +3008,8 @@ Range: 18
 Knockback: 12
 Spread: 5°
 * 
-"),
-new ItemData(340, @"
+") },
+{ 340, new ItemData(340, @"
 Lower Case r
 ""Alphabetical!""
 ItemID: 340
@@ -3007,8 +3025,8 @@ Range: 1000
 Knockback: 14
 Spread: 0°
 * 
-"),
-new ItemData(377, @"
+") },
+{ 377, new ItemData(377, @"
 Excaliber
 ""Once And Future""
 ItemID: 377
@@ -3026,8 +3044,8 @@ Range: 1000
 Knockback: 15
 Spread: 0°
 * 
-"),
-new ItemData(149, @"
+") },
+{ 149, new ItemData(149, @"
 Face Melter
 ""Squiddley-squiddley-wheeyooo!""
 ItemID: 149
@@ -3046,8 +3064,8 @@ Range: 15
 Knockback: 13
 Spread: 6°
 * electric guitar
-"),
-new ItemData(444, @"
+") },
+{ 444, new ItemData(444, @"
 Trident
 ""Under The Sea""
 ItemID: 444
@@ -3064,8 +3082,8 @@ Range: 1000
 Knockback: 4
 Spread: 0°
 * 
-"),
-new ItemData(474, @"
+") },
+{ 474, new ItemData(474, @"
 Abyssal Tentacle
 ""Look Away""
 ItemID: 474
@@ -3083,8 +3101,8 @@ Range: 30
 Knockback: 10
 Spread: 0°
 * 
-"),
-new ItemData(475, @"
+") },
+{ 475, new ItemData(475, @"
 Quad Laser
 ""No One Can Defeat It""
 ItemID: 475
@@ -3100,8 +3118,8 @@ Range: n/a
 Knockback: n/a
 Spread: n/a°
 * 
-"),
-new ItemData(336, @"
+") },
+{ 336, new ItemData(336, @"
 Pitchfork
 ""Get Forked!""
 ItemID: 336
@@ -3118,8 +3136,8 @@ Range: 1000
 Knockback: 35
 Spread: 5°
 * 
-"),
-new ItemData(176, @"
+") },
+{ 176, new ItemData(176, @"
 Gungeon Ant
 ""What Army?""
 ItemID: 176
@@ -3138,8 +3156,8 @@ Range: 1000
 Knockback: 25
 Spread: 0°
 * 
-"),
-new ItemData(177, @"
+") },
+{ 177, new ItemData(177, @"
 Alien Engine
 ""The Dangerzone""
 ItemID: 177
@@ -3156,8 +3174,8 @@ Range: 3
 Knockback: 10
 Spread: 0°
 * 
-"),
-new ItemData(476, @"
+") },
+{ 476, new ItemData(476, @"
 Microtransaction Gun
 ""Pay To Win""
 ItemID: 476
@@ -3182,8 +3200,8 @@ Range: n/a
 Knockback: n/a
 Spread: n/a°
 * 
-"),
-new ItemData(513, @"
+") },
+{ 513, new ItemData(513, @"
 Poxcannon
 ""Lousy T-Shirt""
 ItemID: 513
@@ -3201,8 +3219,8 @@ Range: n/a
 Knockback: n/a
 Spread: n/a°
 * pax cannon paxpox pox
-"),
-new ItemData(150, @"
+") },
+{ 150, new ItemData(150, @"
 T-Shirt Cannon
 ""Machine Gun Wash Only!""
 ItemID: 150
@@ -3218,8 +3236,8 @@ Range: 1000
 Knockback: 60
 Spread: 5°
 * t shirt cannon
-"),
-new ItemData(478, @"
+") },
+{ 478, new ItemData(478, @"
 Banana
 ""Planpain""
 ItemID: 478
@@ -3235,8 +3253,8 @@ Range: n/a
 Knockback: n/a
 Spread: n/a°
 * 
-"),
-new ItemData(14, @"
+") },
+{ 14, new ItemData(14, @"
 Bee Hive
 ""Bzzzzzzz!""
 ItemID: 14
@@ -3252,8 +3270,8 @@ Range: 1000
 Knockback: 2
 Spread: 90°
 * 
-"),
-new ItemData(335, @"
+") },
+{ 335, new ItemData(335, @"
 Silencer
 ""300 Dead Count""
 ItemID: 335
@@ -3270,8 +3288,8 @@ Range: 60
 Knockback: 30
 Spread: 5°
 * 
-"),
-new ItemData(481, @"
+") },
+{ 481, new ItemData(481, @"
 Camera
 ""Say Cheese""
 ItemID: 481
@@ -3288,8 +3306,8 @@ Range: n/a
 Knockback: n/a
 Spread: n/a°
 * 
-"),
-new ItemData(482, @"
+") },
+{ 482, new ItemData(482, @"
 Gunzheng
 ""Hustle""
 ItemID: 482
@@ -3306,8 +3324,8 @@ Range: 1000
 Knockback: 8
 Spread: 35°
 * 
-"),
-new ItemData(382, @"
+") },
+{ 382, new ItemData(382, @"
 Sling
 ""Outrageous!""
 ItemID: 382
@@ -3326,8 +3344,8 @@ Range: 1000
 Knockback: 35
 Spread: 0°
 * 
-"),
-new ItemData(124, @"
+") },
+{ 124, new ItemData(124, @"
 Cactus
 ""1000 Needles!""
 ItemID: 124
@@ -3343,8 +3361,8 @@ Range: n/a
 Knockback: n/a
 Spread: n/a°
 * 
-"),
-new ItemData(169, @"
+") },
+{ 169, new ItemData(169, @"
 Black Hole Gun
 ""Won't You Come""
 ItemID: 169
@@ -3362,8 +3380,8 @@ Range: 1000
 Knockback: 9
 Spread: 0°
 * 
-"),
-new ItemData(21, @"
+") },
+{ 21, new ItemData(21, @"
 BSG
 ""Big Shooty Gun""
 ItemID: 21
@@ -3383,8 +3401,8 @@ Range: 1000
 Knockback: 10
 Spread: 0°
 * 
-"),
-new ItemData(359, @"
+") },
+{ 359, new ItemData(359, @"
 Compressed Air Tank
 ""You Know My Work""
 ItemID: 359
@@ -3403,8 +3421,8 @@ Range: 1000
 Knockback: 60
 Spread: 6°
 * 
-"),
-new ItemData(37, @"
+") },
+{ 37, new ItemData(37, @"
 Serious Cannon
 ""Seriously MENTAL""
 ItemID: 37
@@ -3420,8 +3438,8 @@ Range: 1000
 Knockback: 60
 Spread: 6°
 * 
-"),
-new ItemData(480, @"
+") },
+{ 480, new ItemData(480, @"
 Makeshift Cannon
 ""You Only Get One Shot""
 ItemID: 480
@@ -3438,8 +3456,8 @@ Range: 1000
 Knockback: 60
 Spread: 6°
 * 
-"),
-new ItemData(520, @"
+") },
+{ 520, new ItemData(520, @"
 Balloon Gun
 ""Hot Air""
 ItemID: 520
@@ -3452,8 +3470,8 @@ Clip size: 10
 Quality:  (found in blue chests)
 Damage: 12
 * 
-"),
-new ItemData(503, @"
+") },
+{ 503, new ItemData(503, @"
 Bullet
 ""Fires Guns""
 ItemID: 503
@@ -3464,8 +3482,8 @@ Clip size: 6
 Quality:  (found in blue chests)
 Damage: 7 (Gun projectile), 4 (Bullets)
 * 
-"),
-new ItemData(541, @"
+") },
+{ 541, new ItemData(541, @"
 Casey
 ""Batting .50""
 ItemID: 541
@@ -3480,8 +3498,8 @@ Clip size: 1
 Quality:  (found in brown chests)
 Damage: 100
 * 
-"),
-new ItemData(551, @"
+") },
+{ 551, new ItemData(551, @"
 Crown of Guns
 ""All Hail""
 ItemID: 551
@@ -3494,8 +3512,8 @@ Fire rate: who cares, its heckin fast
 Quality:  (found in blue chests)
 Damage: 5.5
 * 
-"),
-new ItemData(484, @"
+") },
+{ 484, new ItemData(484, @"
 Devolver
 ""Degenerates""
 ItemID: 484
@@ -3508,8 +3526,8 @@ Clip size: 6
 Quality:  (found in blue chests)
 Damage: 6
 * devolver digital
-"),
-new ItemData(514, @"
+") },
+{ 514, new ItemData(514, @"
 Directional Pad
 ""Input Output""
 ItemID: 514
@@ -3522,8 +3540,8 @@ Clip size: 30
 Quality:  (found in green and rainbow chests)
 Damage: 8 (Bullets), 45 (Fireball), Hook (10)
 * 
-"),
-new ItemData(508, @"
+") },
+{ 508, new ItemData(508, @"
 Dueling Laser
 ""More Interesting This Way!""
 ItemID: 508
@@ -3536,8 +3554,8 @@ Clip size: 1
 Quality:  (found in green and rainbow chests)
 Damage: 100
 * dueling lazer, dualing laser, dualing lazer
-"),
-new ItemData(504, @"
+") },
+{ 504, new ItemData(504, @"
 Hyper Light Blaster
 ""Skill Honed Sharp""
 ItemID: 504
@@ -3548,8 +3566,8 @@ Clip size: 12
 Quality:  (found in green and rainbow chests)
 Damage: 20
 * 
-"),
-new ItemData(515, @"
+") },
+{ 515, new ItemData(515, @"
 Mourning Star
 ""Satellite Rain""
 ItemID: 515
@@ -3561,8 +3579,8 @@ Max ammo: 800
 Clip size: 800
 Quality:  (found in black and rainbow chests)
 * 
-"),
-new ItemData(566, @"
+") },
+{ 566, new ItemData(566, @"
 Rad Gun
 ""Totally Rad""
 ItemID: 566
@@ -3577,8 +3595,8 @@ Clip size: 12
 Quality:  (found in green and rainbow chests)
 Damage: Starts at 4, increasing with each successful active reload
 * 
-"),
-new ItemData(576, @"
+") },
+{ 576, new ItemData(576, @"
 Robot's Left Hand
 ""See You Later""
 ItemID: 576
@@ -3587,8 +3605,8 @@ UNLOCK: Unlock this gun by killing The Robot's past
 Type: Automatic
 Quality:  (found in red and rainbow chests)
 * robots left hand
-"),
-new ItemData(512, @"
+") },
+{ 512, new ItemData(512, @"
 Shell
 ""Fires Shotguns""
 ItemID: 512
@@ -3600,8 +3618,8 @@ Clip size: 6
 Quality:  (found in green and rainbow chests)
 Damage: 2x4 (Bullets), 3x8 (Shotguns)
 * 
-"),
-new ItemData(507, @"
+") },
+{ 507, new ItemData(507, @"
 Starpew
 ""Reap And Sow""
 ItemID: 507
@@ -3619,8 +3637,8 @@ Clip size: 100
 Quality:  (found in red and rainbow chests)
 Damage: 5
 * 
-"),
-new ItemData(542, @"
+") },
+{ 542, new ItemData(542, @"
 Strafe Gun
 ""Bleeding Edge Gameplay""
 ItemID: 542
@@ -3634,8 +3652,8 @@ Clip size: 20
 Quality:  (found in black and rainbow chests)
 Damage: 1 (on hit), 8 (in explosion radius)
 * 
-"),
-new ItemData(537, @"
+") },
+{ 537, new ItemData(537, @"
 Vorpal Gun
 "".50 Critical""
 ItemID: 537
@@ -3648,8 +3666,8 @@ Clip size: 6
 Quality:  (found in green and rainbow chests)
 Damage: 5 (normal), 100 (critical)
 * 
-"),
-new ItemData(545, @"
+") },
+{ 545, new ItemData(545, @"
 AC-15
 ""Armor Class Non-Zero""
 ItemID: 545
@@ -3661,8 +3679,8 @@ Clip size: 40
 Quality:  (found in green and rainbow chests)
 Damage: 3.8 (No armor), 15 (With armor)
 * 
-"),
-new ItemData(601, @"
+") },
+{ 601, new ItemData(601, @"
 Big Shotgun
 ""A Shotgun That's Big""
 ItemID: 601
@@ -3675,8 +3693,8 @@ Clip size: 4
 Quality:  (found in red and rainbow chests)
 Damage: n/a
 * 
-"),
-new ItemData(539, @"
+") },
+{ 539, new ItemData(539, @"
 Boxing Glove
 ""Pistol Hondo""
 ItemID: 539
@@ -3689,8 +3707,8 @@ Max ammo: 350
 Quality:  (found in blue chests)
 Damage: 12 (3 star punch deals 200 damage)
 * 
-"),
-new ItemData(599, @"
+") },
+{ 599, new ItemData(599, @"
 Bubble Blaster
 ""The Suds""
 ItemID: 599
@@ -3703,8 +3721,8 @@ Clip size:
 Quality:  (found in blue chests)
 Damage: 
 * 
-"),
-new ItemData(519, @"
+") },
+{ 519, new ItemData(519, @"
 Combined Rifle
 ""Halve Lives""
 ItemID: 519
@@ -3716,8 +3734,8 @@ Max ammo: 500
 Clip size: 30 (Pulse mode) 1 (Energy mode)
 Quality:  (found in green and rainbow chests)
 * 
-"),
-new ItemData(626, @"
+") },
+{ 626, new ItemData(626, @"
 Elimentaler
 ""Full of Holes""
 ItemID: 626
@@ -3729,8 +3747,8 @@ Type: Semi-automatic
 Max ammo: Infinite
 Quality:  (found in black and rainbow chests)
 * 
-"),
-new ItemData(563, @"
+") },
+{ 563, new ItemData(563, @"
 The Exotic
 ""Pack of Wolves""
 ItemID: 563
@@ -3739,8 +3757,8 @@ While held gives you a ghost friend, which reveals the contents of unopened ches
 UNLOCK: Unlock this weapon by purchasing it from Doug for 26 Hegemony Credits
 Quality:  (found in red and rainbow chests)
 * 
-"),
-new ItemData(670, @"
+") },
+{ 670, new ItemData(670, @"
 High Dragunfire
 ""Pre-Rendered""
 ItemID: 670
@@ -3750,8 +3768,8 @@ UNLOCK: Unlock this weapon by finding it in a secret room
 Type: Automatic
 Quality:  (found in black and rainbow chests)
 * 
-"),
-new ItemData(595, @"
+") },
+{ 595, new ItemData(595, @"
 Life Orb
 ""Value For Effort""
 ItemID: 595
@@ -3764,8 +3782,8 @@ Clip size: 600
 Quality:  (found in red and rainbow chests)
 Damage: 
 * 
-"),
-new ItemData(734, @"
+") },
+{ 734, new ItemData(734, @"
 Mimic Gun
 ItemID: 734
 Randomly replaces another gun
@@ -3775,8 +3793,8 @@ UNLOCK: Unlock this weapon by killing an enemy using the Blood Shrine's drain ef
 Max ammo: 900
 Clip size: 8
 * 
-"),
-new ItemData(597, @"
+") },
+{ 597, new ItemData(597, @"
 Mr. Accretion Jr.
 ""Music of the Spheres""
 ItemID: 597
@@ -3796,8 +3814,8 @@ Clip size: 20
 Quality:  (found in green and rainbow chests)
 Damage: 
 * mr accretion jr.
-"),
-new ItemData(609, @"
+") },
+{ 609, new ItemData(609, @"
 Rubenstein's Monster
 ""Unit 00""
 ItemID: 609
@@ -3809,8 +3827,8 @@ Clip size: 100
 Quality: 
 Damage: 7
 * 
-"),
-new ItemData(598, @"
+") },
+{ 598, new ItemData(598, @"
 Stone Dome
 ""Big Head Mode""
 ItemID: 598
@@ -3822,8 +3840,8 @@ Max ammo: 750
 Clip size: 750
 Quality:  (found in green and rainbow chests)
 * 
-"),
-new ItemData(610, @"
+") },
+{ 610, new ItemData(610, @"
 Wood Beam
 ""Speak Softly""
 ItemID: 610
@@ -3834,8 +3852,8 @@ Type: It's not even a gun
 Quality:  (found in green and rainbow chests)
 Damage: 
 * 
-"),
-new ItemData(469, @"
+") },
+{ 469, new ItemData(469, @"
 Master Round I
 ""First Chamber""
 ItemID: 469
@@ -3845,8 +3863,8 @@ Dropped by killing the boss in the first chamber without taking damage
 Type: Passive
 Quality: n/a
 * 
-"),
-new ItemData(471, @"
+") },
+{ 471, new ItemData(471, @"
 Master Round II
 ""Second Chamber""
 ItemID: 471
@@ -3856,8 +3874,8 @@ Dropped by killing the boss in the second chamber without taking damage
 Type: Passive
 Quality: n/a
 * 
-"),
-new ItemData(468, @"
+") },
+{ 468, new ItemData(468, @"
 Master Round III
 ""Third Chamber""
 ItemID: 468
@@ -3867,8 +3885,8 @@ Dropped by killing the boss in the third chamber without taking damage
 Type: Passive
 Quality: n/a
 * 
-"),
-new ItemData(470, @"
+") },
+{ 470, new ItemData(470, @"
 Master Round IV
 ""Fourth Chamber""
 ItemID: 470
@@ -3878,8 +3896,8 @@ Dropped by killing the boss in the fourth chamber without taking damage
 Type: Passive
 Quality: n/a
 * 
-"),
-new ItemData(467, @"
+") },
+{ 467, new ItemData(467, @"
 Master Round V
 ""Fifth Chamber""
 ItemID: 467
@@ -3889,8 +3907,8 @@ Dropped by killing the boss in the fifth chamber without taking damage
 Type: Passive
 Quality: n/a
 * 
-"),
-new ItemData(348, @"
+") },
+{ 348, new ItemData(348, @"
 Prime Primer
 ""Old Magic""
 ItemID: 348
@@ -3899,8 +3917,8 @@ Sold for 110 casings in the shop
 Type: Passive
 Quality: n/a
 * 
-"),
-new ItemData(351, @"
+") },
+{ 351, new ItemData(351, @"
 Arcane Gunpowder
 ""From The Deep""
 ItemID: 351
@@ -3911,8 +3929,8 @@ While this is an Active item, it cannot be used
 Type: Active
 Quality: n/a
 * 
-"),
-new ItemData(349, @"
+") },
+{ 349, new ItemData(349, @"
 Planar Lead
 ""Astral Slug""
 ItemID: 349
@@ -3923,8 +3941,8 @@ The room has an invisible path which can only be revealed with a gun that leaves
 Type: Passive
 Quality: n/a
 * 
-"),
-new ItemData(350, @"
+") },
+{ 350, new ItemData(350, @"
 Obsidian Shell Casing
 ""Indestructible""
 ItemID: 350
@@ -3934,8 +3952,8 @@ Found in the 5th chamber of the Gungeon (Forge) by destroying the skull that is 
 Type: Passive
 Quality: n/a
 * 
-"),
-new ItemData(291, @"
+") },
+{ 291, new ItemData(291, @"
 Meatbun
 ""On A Roll""
 ItemID: 291
@@ -3946,8 +3964,8 @@ Recharge time: Single use
 Quality:
          (found in brown chests)
 * 
-"),
-new ItemData(63, @"
+") },
+{ 63, new ItemData(63, @"
 Medkit
 ""Heals""
 ItemID: 63
@@ -3957,8 +3975,8 @@ Recharge time: Single use
 Quality:
          (found in blue chests)
 * med kit
-"),
-new ItemData(104, @"
+") },
+{ 104, new ItemData(104, @"
 Ration
 ""Calories, Mate""
 ItemID: 104
@@ -3970,8 +3988,8 @@ Type: Active
 Recharge time: Single use
 Quality:  (found in blue chests)
 * 
-"),
-new ItemData(485, @"
+") },
+{ 485, new ItemData(485, @"
 Orange
 ""You're Not Alexander""
 ItemID: 485
@@ -3983,8 +4001,8 @@ Recharge time: Single use
 Quality:
        (found in green and rainbow chests)
 * 
-"),
-new ItemData(412, @"
+") },
+{ 412, new ItemData(412, @"
 Friendship Cookie
 ""It's Delicious""
 ItemID: 412
@@ -3994,8 +4012,8 @@ Type: Active
 Recharge time: Single use
 Quality: n/a
 * 
-"),
-new ItemData(108, @"
+") },
+{ 108, new ItemData(108, @"
 Bomb
 ""Use For Boom""
 ItemID: 108
@@ -4004,8 +4022,8 @@ Type: Active
 Quality:
          (found in brown chests)
 * 
-"),
-new ItemData(109, @"
+") },
+{ 109, new ItemData(109, @"
 Ice Bomb
 ""Cool It!""
 ItemID: 109
@@ -4015,8 +4033,8 @@ Type: Active
 Quality:
          (found in brown chests)
 * 
-"),
-new ItemData(460, @"
+") },
+{ 460, new ItemData(460, @"
 Chaff Grenade
 ""Dazed And Confused""
 ItemID: 460
@@ -4027,8 +4045,8 @@ Type: Active
 Quality:
          (found in blue chests)
 * 
-"),
-new ItemData(66, @"
+") },
+{ 66, new ItemData(66, @"
 Proximity Mine
 ""Use To Place""
 ItemID: 66
@@ -4037,8 +4055,8 @@ Type: Active
 Quality:
          (found in brown chests)
 * 
-"),
-new ItemData(308, @"
+") },
+{ 308, new ItemData(308, @"
 Cluster Mine
 ""Area Hazard""
 ItemID: 308
@@ -4048,8 +4066,8 @@ Type: Active
 Quality:
          (found in blue chests)
 * 
-"),
-new ItemData(136, @"
+") },
+{ 136, new ItemData(136, @"
 C4
 ""Stick Boom""
 ItemID: 136
@@ -4058,8 +4076,8 @@ Type: Active
 Quality:
          (found in brown chests)
 * 
-"),
-new ItemData(366, @"
+") },
+{ 366, new ItemData(366, @"
 Molotov
 ""Feel The Burn""
 ItemID: 366
@@ -4069,8 +4087,8 @@ Type: Active
 Quality:
          (found in brown chests)
 * 
-"),
-new ItemData(252, @"
+") },
+{ 252, new ItemData(252, @"
 Air Strike
 ""Superior!""
 ItemID: 252
@@ -4080,8 +4098,8 @@ Type: Active
 Quality:
          (found in green and rainbow chests)
 * 
-"),
-new ItemData(242, @"
+") },
+{ 242, new ItemData(242, @"
 Napalm Strike
 ""Smells Great!""
 ItemID: 242
@@ -4091,8 +4109,8 @@ Type: Active
 Quality:
          (found in green and rainbow chests)
 * 
-"),
-new ItemData(443, @"
+") },
+{ 443, new ItemData(443, @"
 Big Boy
 ""Set The World On Fire""
 ItemID: 443
@@ -4105,8 +4123,8 @@ Type: Active
 Quality:
        (found in green and rainbow chests)
 * 
-"),
-new ItemData(234, @"
+") },
+{ 234, new ItemData(234, @"
 iBomb Companion App
 ""One For That""
 ItemID: 234
@@ -4115,8 +4133,8 @@ Type: Active
 Quality:
          (found in blue chests)
 * 
-"),
-new ItemData(77, @"
+") },
+{ 77, new ItemData(77, @"
 Supply Drop
 ""I Need Mags!""
 ItemID: 77
@@ -4128,8 +4146,8 @@ Recharge time: Single use
 Quality:
          (found in brown chests)
 * 
-"),
-new ItemData(116, @"
+") },
+{ 116, new ItemData(116, @"
 Ammo Synthesizer
 ""Ammo Chance On Kills""
 ItemID: 116
@@ -4138,8 +4156,8 @@ Type: Passive
 Quality:
          (found in brown chests)
 * 
-"),
-new ItemData(450, @"
+") },
+{ 450, new ItemData(450, @"
 Armor Synthesizer
 ""Play Well, Get Armor""
 ItemID: 450
@@ -4148,8 +4166,8 @@ Type: Passive
 Quality:
          (found in red and rainbow chests)
 * 
-"),
-new ItemData(164, @"
+") },
+{ 164, new ItemData(164, @"
 Heart Synthesizer
 ""Play Well, Get Hearts""
 ItemID: 164
@@ -4158,8 +4176,8 @@ Type: Passive
 Quality:
          (found in red and rainbow chests)
 * 
-"),
-new ItemData(140, @"
+") },
+{ 140, new ItemData(140, @"
 Master of Unlocking
 ""Play Well, Get Keys""
 ItemID: 140
@@ -4168,8 +4186,8 @@ Type: Passive
 Quality:
          (found in green and rainbow chests)
 * 
-"),
-new ItemData(131, @"
+") },
+{ 131, new ItemData(131, @"
 Utility Belt
 ""All Capacity Up!""
 ItemID: 131
@@ -4179,8 +4197,8 @@ Type: Passive
 Quality:
          (found in blue chests)
 * 
-"),
-new ItemData(473, @"
+") },
+{ 473, new ItemData(473, @"
 Hidden Compartment
 ""Extra Space""
 ItemID: 473
@@ -4190,8 +4208,8 @@ The Pilot starts with this item
 Type: Passive
 Quality: n/a
 * 
-"),
-new ItemData(133, @"
+") },
+{ 133, new ItemData(133, @"
 Backpack
 ""Item Capacity Up!""
 ItemID: 133
@@ -4200,8 +4218,8 @@ Type: Passive
 Quality:
          (found in brown chests)
 * 
-"),
-new ItemData(102, @"
+") },
+{ 102, new ItemData(102, @"
 Scope
 ""Steady Aim""
 ItemID: 102
@@ -4210,8 +4228,8 @@ Type: Passive
 Quality:
          (found in brown chests)
 * 
-"),
-new ItemData(273, @"
+") },
+{ 273, new ItemData(273, @"
 Laser Sight
 ""King Of The Dot""
 ItemID: 273
@@ -4221,8 +4239,8 @@ Type: Passive
 Quality:
          (found in blue chests)
 * 
-"),
-new ItemData(134, @"
+") },
+{ 134, new ItemData(134, @"
 Ammo Belt
 ""Ammo Capacity Up!""
 ItemID: 134
@@ -4231,8 +4249,8 @@ Type: Passive
 Quality:
          (found in brown chests)
 * 
-"),
-new ItemData(69, @"
+") },
+{ 69, new ItemData(69, @"
 Bullet Time
 ""Dodge This""
 ItemID: 69
@@ -4241,8 +4259,8 @@ Type: Active
 Quality:
          (found in brown chests)
 * 
-"),
-new ItemData(237, @"
+") },
+{ 237, new ItemData(237, @"
 Aged Bell
 ""Lacuna""
 ItemID: 237
@@ -4252,8 +4270,8 @@ Type: Active
 Quality:
          (found in red and rainbow chests)
 * 
-"),
-new ItemData(155, @"
+") },
+{ 155, new ItemData(155, @"
 Singularity
 ""Sucks""
 ItemID: 155
@@ -4263,8 +4281,8 @@ Type: Active
 Quality:
          (found in blue chests)
 * 
-"),
-new ItemData(71, @"
+") },
+{ 71, new ItemData(71, @"
 Decoy
 ""Get Him!""
 ItemID: 71
@@ -4275,8 +4293,8 @@ Type: Active
 Quality:
          (found in brown chests)
 * 
-"),
-new ItemData(438, @"
+") },
+{ 438, new ItemData(438, @"
 Explosive Decoy
 ""KABOOM!""
 ItemID: 438
@@ -4287,8 +4305,8 @@ Type: Active
 Quality:
          (found in blue chests)
 * 
-"),
-new ItemData(403, @"
+") },
+{ 403, new ItemData(403, @"
 Melted Rock
 ""Corpses Explode""
 ItemID: 403
@@ -4297,8 +4315,8 @@ Type: Active
 Quality:
          (found in blue chests)
 * 
-"),
-new ItemData(356, @"
+") },
+{ 356, new ItemData(356, @"
 Trusty Lockpicks
 ""Who Needs Keys?""
 ItemID: 356
@@ -4309,8 +4327,8 @@ Type: Active
 Quality:
          (found in brown chests)
 * 
-"),
-new ItemData(462, @"
+") },
+{ 462, new ItemData(462, @"
 Smoke Bomb
 ""Vanish!""
 ItemID: 462
@@ -4320,8 +4338,8 @@ Type: Active
 Quality:
        (found in blue chests)
 * 
-"),
-new ItemData(216, @"
+") },
+{ 216, new ItemData(216, @"
 Box
 ""Just A Box""
 ItemID: 216
@@ -4334,8 +4352,8 @@ Type: Active
 Quality:
          (found in red and rainbow chests)
 * 
-"),
-new ItemData(105, @"
+") },
+{ 105, new ItemData(105, @"
 Fortune's Favor
 ""Use For Luck""
 ItemID: 105
@@ -4344,8 +4362,8 @@ Type: Active
 Quality:
          (found in green and rainbow chests)
 * fortune's favour, fortunes favour, fortunes favor
-"),
-new ItemData(432, @"
+") },
+{ 432, new ItemData(432, @"
 Jar of Bees
 ""The Pain!""
 ItemID: 432
@@ -4354,8 +4372,8 @@ Type: Active
 Quality:
          (found in blue chests)
 * 
-"),
-new ItemData(64, @"
+") },
+{ 64, new ItemData(64, @"
 Potion of Lead Skin
 ""I'm Invincible!""
 ItemID: 64
@@ -4364,8 +4382,8 @@ Type: Active
 Quality:
          (found in brown chests)
 * 
-"),
-new ItemData(168, @"
+") },
+{ 168, new ItemData(168, @"
 Double Vision
 ""One For Each Of You""
 ItemID: 168
@@ -4374,8 +4392,8 @@ Type: Active
 Quality:
          (found in brown chests)
 * 
-"),
-new ItemData(205, @"
+") },
+{ 205, new ItemData(205, @"
 Poison Vial
 ""For External Use Only""
 ItemID: 205
@@ -4384,8 +4402,8 @@ Type: Active
 Quality:
          (found in brown chests)
 * 
-"),
-new ItemData(174, @"
+") },
+{ 174, new ItemData(174, @"
 Ring of Chest Friendship
 ""Chest Friends Forever""
 ItemID: 174 & 254
@@ -4394,8 +4412,8 @@ Type: Passive
 Quality:
          (found in green and rainbow chests)
 * 
-"),
-new ItemData(201, @"
+") },
+{ 201, new ItemData(201, @"
 Portable Turret
 ""Some Assembly Required""
 ItemID: 201
@@ -4406,8 +4424,8 @@ Type: Active
 Quality:
          (found in green and rainbow chests)
 * 
-"),
-new ItemData(65, @"
+") },
+{ 65, new ItemData(65, @"
 Knife Shield
 ""Use Again To Launch!""
 ItemID: 65
@@ -4421,8 +4439,8 @@ Type: Active
 Quality:
          (found in brown chests)
 * 
-"),
-new ItemData(250, @"
+") },
+{ 250, new ItemData(250, @"
 Grappling Hook
 ""Rapid Transit""
 ItemID: 250
@@ -4438,8 +4456,8 @@ Type: Active
 Quality:
          (found in brown chests)
 * 
-"),
-new ItemData(433, @"
+") },
+{ 433, new ItemData(433, @"
 Stuffed Star
 ""Protective Plush""
 ItemID: 433
@@ -4448,8 +4466,8 @@ Type: Active
 Quality:
        (found in green and rainbow chests)
 * 
-"),
-new ItemData(448, @"
+") },
+{ 448, new ItemData(448, @"
 Boomerang
 ""Usually Comes Back""
 ItemID: 448
@@ -4458,8 +4476,8 @@ Type: Active
 Quality:
          (found in green and rainbow chests)
 * 
-"),
-new ItemData(447, @"
+") },
+{ 447, new ItemData(447, @"
 Shield of the Maiden
 ""Block And Load""
 ItemID: 447
@@ -4470,8 +4488,8 @@ Type: Active
 Quality:
          (found in blue chests)
 * 
-"),
-new ItemData(286, @"
+") },
+{ 286, new ItemData(286, @"
 +1 Bullets
 ""+1 To Bullet""
 ItemID: 286
@@ -4481,8 +4499,8 @@ Type: Passive
 Quality:
          (found in blue chests)
 * 
-"),
-new ItemData(113, @"
+") },
+{ 113, new ItemData(113, @"
 Rocket-Powered Bullets
 ""Faster Bullets""
 ItemID: 113
@@ -4493,8 +4511,8 @@ Type: Passive
 Quality:
          (found in green and rainbow chests)
 * rocket powered
-"),
-new ItemData(111, @"
+") },
+{ 111, new ItemData(111, @"
 Heavy Bullets
 ""Thunk!""
 ItemID: 111
@@ -4504,8 +4522,8 @@ Type: Passive
 Quality:
          (found in blue chests)
 * 
-"),
-new ItemData(298, @"
+") },
+{ 298, new ItemData(298, @"
 Shock Rounds
 ""Electrified!""
 ItemID: 298
@@ -4514,8 +4532,8 @@ Type: Passive
 Quality:
          (found in black and rainbow chests)
 * 
-"),
-new ItemData(288, @"
+") },
+{ 288, new ItemData(288, @"
 Bouncy Bullets
 ""Boiyoiyoing!""
 ItemID: 288
@@ -4524,8 +4542,8 @@ Type: Passive
 Quality:
          (found in blue chests)
 * 
-"),
-new ItemData(304, @"
+") },
+{ 304, new ItemData(304, @"
 Explosive Rounds
 ""Mega Blast""
 ItemID: 304
@@ -4535,8 +4553,8 @@ Type: Passive
 Quality:
          (found in red and rainbow chests)
 * 
-"),
-new ItemData(172, @"
+") },
+{ 172, new ItemData(172, @"
 Ghost Bullets
 ""Shoot Through""
 ItemID: 172
@@ -4545,8 +4563,8 @@ Type: Passive
 Quality:
          (found in blue chests)
 * 
-"),
-new ItemData(373, @"
+") },
+{ 373, new ItemData(373, @"
 Alpha Bullets
 ""First!""
 ItemID: 373
@@ -4557,8 +4575,8 @@ Type: Passive
 Quality:
          (found in red and rainbow chests)
 * 
-"),
-new ItemData(374, @"
+") },
+{ 374, new ItemData(374, @"
 Omega Bullets
 ""Last!""
 ItemID: 374
@@ -4569,8 +4587,8 @@ Type: Passive
 Quality:
          (found in red and rainbow chests)
 * 
-"),
-new ItemData(241, @"
+") },
+{ 241, new ItemData(241, @"
 Scattershot
 ""Quantity Over Quality""
 ItemID: 241
@@ -4580,8 +4598,8 @@ Type: Passive
 Quality:
        (found in green and rainbow chests)
 * 
-"),
-new ItemData(204, @"
+") },
+{ 204, new ItemData(204, @"
 Irradiated Lead
 ""Poison Shot""
 ItemID: 204
@@ -4591,8 +4609,8 @@ Type: Passive
 Quality:
          (found in green and rainbow chests)
 * 
-"),
-new ItemData(295, @"
+") },
+{ 295, new ItemData(295, @"
 Hot Lead
 ""Chance To Ignite""
 ItemID: 295
@@ -4603,8 +4621,8 @@ Type: Passive
 Quality:
          (found in green and rainbow chests)
 * 
-"),
-new ItemData(278, @"
+") },
+{ 278, new ItemData(278, @"
 Frost Bullets
 ""Icy Fire""
 ItemID: 278
@@ -4614,8 +4632,8 @@ Type: Passive
 Quality:
          (found in red and rainbow chests)
 * 
-"),
-new ItemData(277, @"
+") },
+{ 277, new ItemData(277, @"
 Fat Bullets
 ""Fatter = Stronger""
 ItemID: 277
@@ -4626,8 +4644,8 @@ Type: Passive
 Quality:
          (found in red and rainbow chests)
 * 
-"),
-new ItemData(323, @"
+") },
+{ 323, new ItemData(323, @"
 Angry Bullets
 ""Hungry For More""
 ItemID: 323
@@ -4638,8 +4656,8 @@ Type: Passive
 Quality:
          (found in blue chests)
 * 
-"),
-new ItemData(410, @"
+") },
+{ 410, new ItemData(410, @"
 Battery Bullets
 ""Zap!""
 ItemID: 410
@@ -4649,8 +4667,8 @@ Type: Passive
 Quality:
          (found in brown chests)
 * 
-"),
-new ItemData(284, @"
+") },
+{ 284, new ItemData(284, @"
 Homing Bullets
 ""Fire And Forget""
 ItemID: 284
@@ -4659,8 +4677,8 @@ Type: Passive
 Quality:
          (found in green and rainbow chests)
 * 
-"),
-new ItemData(352, @"
+") },
+{ 352, new ItemData(352, @"
 Shadow Bullets
 ""Double Tap""
 ItemID: 352
@@ -4669,8 +4687,8 @@ Type: Passive
 Quality:
          (found in green and rainbow chests)
 * 
-"),
-new ItemData(375, @"
+") },
+{ 375, new ItemData(375, @"
 Easy Reload Bullets
 ""Rolling Reload""
 ItemID: 375
@@ -4679,8 +4697,8 @@ Type: Passive
 Quality:
          (found in blue chests)
 * 
-"),
-new ItemData(114, @"
+") },
+{ 114, new ItemData(114, @"
 Bionic Leg
 ""More Machine Than Man""
 ItemID: 114
@@ -4690,8 +4708,8 @@ Type: Passive
 Quality:
          (found in blue chests)
 * 
-"),
-new ItemData(427, @"
+") },
+{ 427, new ItemData(427, @"
 Shotgun Coffee
 ""Speed Up""
 ItemID: 427
@@ -4700,8 +4718,8 @@ Type: Passive
 Quality:
          (found in blue chests)
 * 
-"),
-new ItemData(426, @"
+") },
+{ 426, new ItemData(426, @"
 Shotga Cola
 ""Speed Up""
 ItemID: 426
@@ -4710,8 +4728,8 @@ Type: Passive
 Quality:
          (found in blue chests)
 * 
-"),
-new ItemData(212, @"
+") },
+{ 212, new ItemData(212, @"
 Ballistic Boots
 ""Speedier Than A Bullet""
 ItemID: 212
@@ -4720,8 +4738,8 @@ Type: Passive
 Quality:
          (found in green and rainbow chests)
 * 
-"),
-new ItemData(110, @"
+") },
+{ 110, new ItemData(110, @"
 Magic Sweet
 ""Free Stats""
 ItemID: 110
@@ -4733,8 +4751,8 @@ Type: Passive
 Quality:
          (found in red and rainbow chests)
 * rare candy pokemon
-"),
-new ItemData(187, @"
+") },
+{ 187, new ItemData(187, @"
 Disarming Personality
 ""For You?""
 ItemID: 187
@@ -4745,8 +4763,8 @@ Type: Passive
 Quality:
          (found in blue chests)
 * 
-"),
-new ItemData(435, @"
+") },
+{ 435, new ItemData(435, @"
 Mustache
 ""A Familiar Face""
 ItemID: 435
@@ -4755,8 +4773,8 @@ Type: Passive
 Quality:
          (found in blue chests)
 * 
-"),
-new ItemData(213, @"
+") },
+{ 213, new ItemData(213, @"
 Lichy Trigger Finger
 ""Rate of Fire Up""
 ItemID: 213
@@ -4765,8 +4783,8 @@ Type: Passive
 Quality:
          (found in brown chests)
 * 
-"),
-new ItemData(353, @"
+") },
+{ 353, new ItemData(353, @"
 Enraging Photo
 ""Don't Believe His Lies""
 ItemID: 353
@@ -4777,8 +4795,8 @@ Type: Passive
 Quality:
          (found in brown chests)
 * 
-"),
-new ItemData(115, @"
+") },
+{ 115, new ItemData(115, @"
 Ballot
 ""Vote Of Confidence!""
 ItemID: 115
@@ -4787,8 +4805,8 @@ Type: Passive
 Quality:
          (found in blue chests)
 * 
-"),
-new ItemData(414, @"
+") },
+{ 414, new ItemData(414, @"
 Live Ammo
 ""I'm A Bullet Too!""
 ItemID: 414
@@ -4798,8 +4816,8 @@ The Bullet starts with this item
 Type: Passive
 Quality: N/A
 * 
-"),
-new ItemData(118, @"
+") },
+{ 118, new ItemData(118, @"
 Eyepatch
 ""Hit Harder Less Often""
 ItemID: 118
@@ -4810,8 +4828,8 @@ Type: Passive
 Quality:
          (found in red and rainbow chests)
 * eye patch
-"),
-new ItemData(354, @"
+") },
+{ 354, new ItemData(354, @"
 Military Training
 ""Hold Facing Enemy""
 ItemID: 354
@@ -4823,8 +4841,8 @@ Type: Passive
 Quality:
          (found in blue chests)
 * millitary
-"),
-new ItemData(112, @"
+") },
+{ 112, new ItemData(112, @"
 Cartographer's Ring
 ""Some Floors Are Familiar""
 ItemID: 112
@@ -4833,8 +4851,8 @@ Type: Passive
 Quality:
          (found in blue chests)
 * 
-"),
-new ItemData(191, @"
+") },
+{ 191, new ItemData(191, @"
 Ring of Fire Resistance
 ""No Burns""
 ItemID: 191
@@ -4843,8 +4861,8 @@ Type: Passive
 Quality:
          (found in blue chests)
 * 
-"),
-new ItemData(132, @"
+") },
+{ 132, new ItemData(132, @"
 Ring of Miserly Protection
 ""Aids The Fiscally Responsible""
 ItemID: 132
@@ -4853,8 +4871,8 @@ Type: Passive
 Quality:
          (found in blue chests)
 * 
-"),
-new ItemData(495, @"
+") },
+{ 495, new ItemData(495, @"
 Unity
 ""Our Powers Combined""
 ItemID: 495
@@ -4867,8 +4885,8 @@ Type: Passive
 Quality:
          (found in green and rainbow chests)
 * 
-"),
-new ItemData(488, @"
+") },
+{ 488, new ItemData(488, @"
 Ring of Chest Vampirism
 ""Blood From Wood""
 ItemID: 488
@@ -4878,8 +4896,8 @@ Type: Passive
 Quality:
          (found in green and rainbow chests)
 * 
-"),
-new ItemData(309, @"
+") },
+{ 309, new ItemData(309, @"
 Cloranthy Ring
 ""Dodge Power Up""
 ItemID: 309
@@ -4888,8 +4906,8 @@ Type: Passive
 Quality:
          (found in blue chests)
 * 
-"),
-new ItemData(294, @"
+") },
+{ 294, new ItemData(294, @"
 Ring of Mimic Friendship
 ""Unlikely Allies""
 ItemID: 294
@@ -4898,8 +4916,8 @@ Type: Passive
 Quality:
          (found in brown chests)
 * 
-"),
-new ItemData(456, @"
+") },
+{ 456, new ItemData(456, @"
 Ring of Triggers
 ""Items == Guns""
 ItemID: 456
@@ -4908,8 +4926,8 @@ Type: Passive
 Quality:
          (found in red and rainbow chests)
 * 
-"),
-new ItemData(458, @"
+") },
+{ 458, new ItemData(458, @"
 Ring of Ethereal Form
 ""Get Ethereal!""
 ItemID: 458
@@ -4919,8 +4937,8 @@ Type: Active
 Quality:
          (found in green and rainbow chests)
 * 
-"),
-new ItemData(159, @"
+") },
+{ 159, new ItemData(159, @"
 Gundromeda Strain
 ""All Enemies Weaker!""
 ItemID: 159
@@ -4930,8 +4948,8 @@ Type: Passive
 Quality:
          (found in black and rainbow chests)
 * 
-"),
-new ItemData(258, @"
+") },
+{ 258, new ItemData(258, @"
 Broccoli
 ""Makes You Strong""
 ItemID: 258
@@ -4943,8 +4961,8 @@ Type: Passive
 Quality:
          (found in red and rainbow chests)
 * 
-"),
-new ItemData(240, @"
+") },
+{ 240, new ItemData(240, @"
 Crutch
 ""You Need It""
 ItemID: 240
@@ -4953,8 +4971,8 @@ Type: Passive
 Quality:
          (found in green and rainbow chests)
 * 
-"),
-new ItemData(431, @"
+") },
+{ 431, new ItemData(431, @"
 Liquid Valkyrie
 ""Maximum Pain""
 ItemID: 431
@@ -4963,8 +4981,8 @@ Type: Passive
 Quality:
          (found in red and rainbow chests)
 * 
-"),
-new ItemData(167, @"
+") },
+{ 167, new ItemData(167, @"
 Bloody Eye
 ""Slower Enemy Bullets""
 ItemID: 167
@@ -4974,8 +4992,8 @@ Type: Passive
 Quality:
          (found in green and rainbow chests)
 * 
-"),
-new ItemData(160, @"
+") },
+{ 160, new ItemData(160, @"
 Gunknight Helmet
 ""Armor Every Floor""
 ItemID: 160
@@ -4988,8 +5006,8 @@ Type: Passive
 Quality:
          (found in red and rainbow chests)
 * 
-"),
-new ItemData(161, @"
+") },
+{ 161, new ItemData(161, @"
 Gunknight Greaves
 ""Armor Every Floor""
 ItemID: 161
@@ -5001,8 +5019,8 @@ Type: Passive
 Quality:
          (found in blue chests)
 * 
-"),
-new ItemData(163, @"
+") },
+{ 163, new ItemData(163, @"
 Gunknight Armor
 ""Armor Every Floor""
 ItemID: 163
@@ -5014,8 +5032,8 @@ Type: Passive
 Quality:
          (found in green and rainbow chests)
 * 
-"),
-new ItemData(162, @"
+") },
+{ 162, new ItemData(162, @"
 Gunknight Gauntlet
 ""Armor Every Floor""
 ItemID: 162
@@ -5027,8 +5045,8 @@ Type: Passive
 Quality:
          (found in blue chests)
 * 
-"),
-new ItemData(158, @"
+") },
+{ 158, new ItemData(158, @"
 Amulet of the Pit Lord
 ""No Fall Damage""
 ItemID: 158
@@ -5038,8 +5056,8 @@ Type: Passive
 Quality:
          (found in brown chests)
 * 
-"),
-new ItemData(219, @"
+") },
+{ 219, new ItemData(219, @"
 Old Knight's Shield
 ""Heavy With Experience""
 ItemID: 219
@@ -5048,8 +5066,8 @@ UNLOCK: Unlock this item by finding Ser Manuel's remains in the tutorial secret 
 Type: Passive
 Quality: N/A
 * 
-"),
-new ItemData(222, @"
+") },
+{ 222, new ItemData(222, @"
 Old Knight's Helm
 ""Protects Knowledge""
 ItemID: 222
@@ -5058,8 +5076,8 @@ UNLOCK: Unlock this item by finding Ser Manuel's remains in the tutorial secret 
 Type: Passive
 Quality: N/A
 * 
-"),
-new ItemData(267, @"
+") },
+{ 267, new ItemData(267, @"
 Old Knight's Flask
 ""Heals Per Floor""
 ItemID: 267
@@ -5070,8 +5088,8 @@ Type: Active
 Quality:
          (found in red and rainbow chests)
 * estus flask
-"),
-new ItemData(305, @"
+") },
+{ 305, new ItemData(305, @"
 Old Crest
 ""Passive""
 ItemID: 305
@@ -5081,8 +5099,8 @@ Can be placed on the alter in the Gungeon Proper (Chamber #2) to gain access to 
 Type: Passive
 Quality: unknown
 * 
-"),
-new ItemData(457, @"
+") },
+{ 457, new ItemData(457, @"
 Armor of Thorns
 ""Your Body Is A Weapon""
 ItemID: 457
@@ -5092,8 +5110,8 @@ Type: Passive
 Quality:
          (found in blue chests)
 * 
-"),
-new ItemData(256, @"
+") },
+{ 256, new ItemData(256, @"
 Heavy Boots
 ""Low Center Of Mass""
 ItemID: 256
@@ -5102,8 +5120,8 @@ Type: Passive
 Quality:
          (found in brown chests)
 * 
-"),
-new ItemData(193, @"
+") },
+{ 193, new ItemData(193, @"
 Bug Boots
 ""Yikes!""
 ItemID: 193
@@ -5114,8 +5132,8 @@ Type: Passive
 Quality:
          (found in green and rainbow chests)
 * 
-"),
-new ItemData(315, @"
+") },
+{ 315, new ItemData(315, @"
 Gunboots
 ""They Go Down Well""
 ItemID: 315
@@ -5125,8 +5143,8 @@ Type: Passive
 Quality:
          (found in blue chests)
 * gun boots
-"),
-new ItemData(214, @"
+") },
+{ 214, new ItemData(214, @"
 Coin Crown
 ""Play Well, Get Money""
 ItemID: 214
@@ -5136,8 +5154,8 @@ Type: Passive
 Quality:
          (found in blue chests)
 * 
-"),
-new ItemData(165, @"
+") },
+{ 165, new ItemData(165, @"
 Oiled Cylinder
 ""Reload Faster""
 ItemID: 165
@@ -5146,8 +5164,8 @@ Type: Passive
 Quality:
          (found in blue chests)
 * 
-"),
-new ItemData(170, @"
+") },
+{ 170, new ItemData(170, @"
 Ice Cube
 ""Items Recharge While Active""
 ItemID: 170
@@ -5157,8 +5175,8 @@ Type: Passive
 Quality:
          (found in green and rainbow chests)
 * 
-"),
-new ItemData(190, @"
+") },
+{ 190, new ItemData(190, @"
 Rolling Eye
 ""Back At You""
 ItemID: 190
@@ -5167,8 +5185,8 @@ Type: Passive
 Quality:
          (found in blue chests)
 * 
-"),
-new ItemData(203, @"
+") },
+{ 203, new ItemData(203, @"
 Cigarettes
 ""Hazardous To Health""
 ItemID: 203
@@ -5179,8 +5197,8 @@ Type: Active
 Quality:
          (found in brown chests)
 * 
-"),
-new ItemData(206, @"
+") },
+{ 206, new ItemData(206, @"
 Charm Horn
 ""The Call Of Duty""
 ItemID: 206
@@ -5190,8 +5208,8 @@ Type: Active
 Quality:
          (found in green and rainbow chests)
 * 
-"),
-new ItemData(135, @"
+") },
+{ 135, new ItemData(135, @"
 Cog of Battle
 ""Active Reload""
 ItemID: 135
@@ -5202,8 +5220,8 @@ Type: Passive
 Quality:
          (found in blue chests)
 * 
-"),
-new ItemData(119, @"
+") },
+{ 119, new ItemData(119, @"
 Metronome
 ""Better And Better""
 ItemID: 119
@@ -5214,8 +5232,8 @@ Type: Passive
 Quality:
          (found in green and rainbow chests)
 * 
-"),
-new ItemData(138, @"
+") },
+{ 138, new ItemData(138, @"
 Honeycomb
 ""Bee Prepared""
 ItemID: 138
@@ -5224,8 +5242,8 @@ Type: Passive
 Quality:
        (found in blue chests)
 * 
-"),
-new ItemData(137, @"
+") },
+{ 137, new ItemData(137, @"
 Map
 ""Floor Revealed""
 ItemID: 137
@@ -5234,8 +5252,8 @@ Type: Passive
 Quality:
          (found in brown chests)
 * 
-"),
-new ItemData(281, @"
+") },
+{ 281, new ItemData(281, @"
 Gungeon Blueprint
 ""Procedurally Updates""
 ItemID: 281
@@ -5245,8 +5263,8 @@ Type: Passive
 Quality:
          (found in black and rainbow chests)
 * 
-"),
-new ItemData(209, @"
+") },
+{ 209, new ItemData(209, @"
 Sense of Direction
 ""Surprisingly Rare.""
 ItemID: 209
@@ -5255,8 +5273,8 @@ Type: Active
 Quality:
          (found in brown chests)
 * 
-"),
-new ItemData(239, @"
+") },
+{ 239, new ItemData(239, @"
 Duct Tape
 ""Friend Of Gunsmiths""
 ItemID: 239
@@ -5266,8 +5284,8 @@ Type: Active
 Quality:
          (found in red and rainbow chests)
 * 
-"),
-new ItemData(253, @"
+") },
+{ 253, new ItemData(253, @"
 Gungeon Pepper
 ""The Heat Is On!""
 ItemID: 253
@@ -5276,8 +5294,8 @@ Type: Passive
 Quality:
          (found in blue chests)
 * 
-"),
-new ItemData(259, @"
+") },
+{ 259, new ItemData(259, @"
 Antibody
 ""Heals Up""
 ItemID: 259
@@ -5287,8 +5305,8 @@ Type: Passive
 Quality:
          (found in green and rainbow chests)
 * 
-"),
-new ItemData(260, @"
+") },
+{ 260, new ItemData(260, @"
 Pink Guon Stone
 ""Increased Health""
 ItemID: 260
@@ -5298,8 +5316,8 @@ Type: Passive
 Quality:
          (found in green and rainbow chests)
 * 
-"),
-new ItemData(262, @"
+") },
+{ 262, new ItemData(262, @"
 White Guon Stone
 ""Kindles Blanks""
 ItemID: 262
@@ -5309,8 +5327,8 @@ Type: Passive
 Quality:
          (found in green and rainbow chests)
 * 
-"),
-new ItemData(263, @"
+") },
+{ 263, new ItemData(263, @"
 Orange Guon Stone
 ""Hot Rock""
 ItemID: 263
@@ -5320,8 +5338,8 @@ Type: Passive
 Quality:
        (found in red and rainbow chests)
 * 
-"),
-new ItemData(264, @"
+") },
+{ 264, new ItemData(264, @"
 Clear Guon Stone
 ""Pure""
 ItemID: 264
@@ -5331,8 +5349,8 @@ Type: Passive
 Quality:
          (found in green and rainbow chests)
 * 
-"),
-new ItemData(466, @"
+") },
+{ 466, new ItemData(466, @"
 Green Guon Stone
 ""Chance To Heal""
 ItemID: 466
@@ -5342,8 +5360,8 @@ Type: Passive
 Quality:
          (found in black and rainbow chests)
 * 
-"),
-new ItemData(269, @"
+") },
+{ 269, new ItemData(269, @"
 Red Guon Stone
 ""Dodge Up""
 ItemID: 269
@@ -5353,8 +5371,8 @@ Type: Passive
 Quality:
          (found in green and rainbow chests)
 * 
-"),
-new ItemData(270, @"
+") },
+{ 270, new ItemData(270, @"
 Blue Guon Stone
 ""On My Side""
 ItemID: 270
@@ -5364,8 +5382,8 @@ Type: Passive
 Quality:
          (found in green and rainbow chests)
 * 
-"),
-new ItemData(272, @"
+") },
+{ 272, new ItemData(272, @"
 Iron Coin
 ""Valar Morgunis""
 ItemID: 272
@@ -5378,8 +5396,8 @@ Type: Active
 Quality:
          (found in blue chests)
 * game of thrones
-"),
-new ItemData(279, @"
+") },
+{ 279, new ItemData(279, @"
 Super Hot Watch
 ""Suuuuuuper""
 ItemID: 279
@@ -5389,8 +5407,8 @@ Type: Passive
 Quality:
          (found in black and rainbow chests)
 * SUPER HOT SUPER HOT SUPER HOT
-"),
-new ItemData(280, @"
+") },
+{ 280, new ItemData(280, @"
 Drum Clip
 ""One Size Fits All""
 ItemID: 280
@@ -5399,8 +5417,8 @@ Type: Passive
 Quality:
          (found in green and rainbow chests)
 * 
-"),
-new ItemData(285, @"
+") },
+{ 285, new ItemData(285, @"
 Blood Brooch
 ""What Music They Make!""
 ItemID: 285
@@ -5411,8 +5429,8 @@ Type: Passive
 Quality:
          (found in red and rainbow chests)
 * 
-"),
-new ItemData(287, @"
+") },
+{ 287, new ItemData(287, @"
 Backup Gun
 ""Watch Your Back""
 ItemID: 287
@@ -5421,8 +5439,8 @@ Type: Passive
 Quality:
          (found in green and rainbow chests)
 * mom's eye, die hard, yipee kayay mother fucker, john mcclane, beretta 92F
-"),
-new ItemData(290, @"
+") },
+{ 290, new ItemData(290, @"
 Sunglasses
 ""Bright Future""
 ItemID: 290
@@ -5433,8 +5451,8 @@ Type: Passive
 Quality:
          (found in blue chests)
 * 
-"),
-new ItemData(293, @"
+") },
+{ 293, new ItemData(293, @"
 Mimic Tooth Necklace
 ""Chomp""
 ItemID: 293
@@ -5446,8 +5464,8 @@ Type: Passive
 Quality:
          (found in red and rainbow chests)
 * 
-"),
-new ItemData(306, @"
+") },
+{ 306, new ItemData(306, @"
 Escape Rope
 ""Works Anywhere!""
 ItemID: 306
@@ -5456,8 +5474,8 @@ Type: Active
 Quality:
          (found in blue chests)
 * 
-"),
-new ItemData(106, @"
+") },
+{ 106, new ItemData(106, @"
 Jetpack
 ""To Fly""
 ItemID: 106
@@ -5468,8 +5486,8 @@ Recharge time: Toggled
 Quality:
          (found in blue chests)
 * 
-"),
-new ItemData(307, @"
+") },
+{ 307, new ItemData(307, @"
 Wax Wings
 ""Too Close To The Gun""
 ItemID: 307
@@ -5479,8 +5497,8 @@ Type: Passive
 Quality:
          (found in green and rainbow chests)
 * ~fly
-"),
-new ItemData(312, @"
+") },
+{ 312, new ItemData(312, @"
 Blast Helmet
 ""Duck And Cover""
 ItemID: 312
@@ -5490,8 +5508,8 @@ Type: Passive
 Quality:
          (found in brown chests)
 * 
-"),
-new ItemData(313, @"
+") },
+{ 313, new ItemData(313, @"
 Monster Blood
 ""Twist To Open""
 ItemID: 313
@@ -5503,8 +5521,8 @@ Type: Passive
 Quality:
          (found in blue chests)
 * 
-"),
-new ItemData(314, @"
+") },
+{ 314, new ItemData(314, @"
 Nanomachines
 ""Son""
 ItemID: 314
@@ -5515,8 +5533,8 @@ Type: Passive
 Quality:
        (found in green and rainbow chests)
 * micro machines, micromachines, metal gear rising
-"),
-new ItemData(289, @"
+") },
+{ 289, new ItemData(289, @"
 Seven-Leaf Clover
 ""Lucky!""
 ItemID: 289
@@ -5527,8 +5545,8 @@ Type: Passive
 Quality:
          (found in black and rainbow chests)
 * 
-"),
-new ItemData(326, @"
+") },
+{ 326, new ItemData(326, @"
 Number 2
 ""Sidekick No More""
 ItemID: 326
@@ -5537,8 +5555,8 @@ Boosts stats while your co-op partner is dead
 Type: Passive
 Quality: unknown
 * 
-"),
-new ItemData(321, @"
+") },
+{ 321, new ItemData(321, @"
 Gold Ammolet
 ""Blank Damage Up""
 ItemID: 321
@@ -5548,8 +5566,8 @@ Type: Passive
 Quality:
        (found in green and rainbow chests)
 * 
-"),
-new ItemData(325, @"
+") },
+{ 325, new ItemData(325, @"
 Chaos Ammolet
 ""What Can Will""
 ItemID: 325
@@ -5559,8 +5577,8 @@ Type: Passive
 Quality:
          (found in red and rainbow chests)
 * 
-"),
-new ItemData(322, @"
+") },
+{ 322, new ItemData(322, @"
 Lodestone Ammolet
 ""Blank Knockback Up""
 ItemID: 322
@@ -5571,8 +5589,8 @@ Type: Passive
 Quality:
          (found in brown chests)
 * 
-"),
-new ItemData(342, @"
+") },
+{ 342, new ItemData(342, @"
 Uranium Ammolet
 ""Blanks Poison""
 ItemID: 342
@@ -5582,8 +5600,8 @@ Type: Passive
 Quality:
          (found in green and rainbow chests)
 * 
-"),
-new ItemData(343, @"
+") },
+{ 343, new ItemData(343, @"
 Copper Ammolet
 ""Blanks Ignite""
 ItemID: 343
@@ -5593,8 +5611,8 @@ Type: Passive
 Quality:
          (found in green and rainbow chests)
 * 
-"),
-new ItemData(344, @"
+") },
+{ 344, new ItemData(344, @"
 Frost Ammolet
 ""Chance To Freeze""
 ItemID: 344
@@ -5604,8 +5622,8 @@ Type: Passive
 Quality:
          (found in green and rainbow chests)
 * 
-"),
-new ItemData(396, @"
+") },
+{ 396, new ItemData(396, @"
 Table Tech Sight
 ""Flip Multiplier""
 ItemID: 396
@@ -5614,8 +5632,8 @@ Type: Passive
 Quality:
          (found in brown chests)
 * 
-"),
-new ItemData(397, @"
+") },
+{ 397, new ItemData(397, @"
 Table Tech Money
 ""Flip Prosperity""
 ItemID: 397
@@ -5625,8 +5643,8 @@ Type: Passive
 Quality:
          (found in brown chests)
 * 
-"),
-new ItemData(398, @"
+") },
+{ 398, new ItemData(398, @"
 Table Tech Rocket
 ""End Table""
 ItemID: 398
@@ -5636,8 +5654,8 @@ Type: Passive
 Quality:
          (found in blue chests)
 * 
-"),
-new ItemData(399, @"
+") },
+{ 399, new ItemData(399, @"
 Table Tech Rage
 ""Flips Of Fury""
 ItemID: 399
@@ -5646,8 +5664,8 @@ Type: Passive
 Quality:
          (found in brown chests)
 * 
-"),
-new ItemData(400, @"
+") },
+{ 400, new ItemData(400, @"
 Table Tech Blanks
 ""Flip Clarity""
 ItemID: 400
@@ -5656,8 +5674,8 @@ Type: Passive
 Quality:
          (found in blue chests)
 * 
-"),
-new ItemData(465, @"
+") },
+{ 465, new ItemData(465, @"
 Table Tech Stun
 ""Flip Showmanship""
 ItemID: 465
@@ -5666,8 +5684,8 @@ Type: Passive
 Quality:
          (found in blue chests)
 * 
-"),
-new ItemData(421, @"
+") },
+{ 421, new ItemData(421, @"
 Heart Holster
 ""On Your Sleeve""
 ItemID: 421
@@ -5677,8 +5695,8 @@ Quality:
         
  (found in red, blue, green and rainbow chests)
 * 
-"),
-new ItemData(422, @"
+") },
+{ 422, new ItemData(422, @"
 Heart Lunchbox
 ""Healthy Meal""
 ItemID: 422
@@ -5689,8 +5707,8 @@ Quality:
         
  (found in red, blue, green and rainbow chests)
 * 
-"),
-new ItemData(423, @"
+") },
+{ 423, new ItemData(423, @"
 Heart Locket
 ""Memento Mori""
 ItemID: 423
@@ -5701,8 +5719,8 @@ Quality:
         
  (found in red, blue, green and rainbow chests)
 * 
-"),
-new ItemData(424, @"
+") },
+{ 424, new ItemData(424, @"
 Heart Bottle
 ""Liquid Life""
 ItemID: 424
@@ -5713,8 +5731,8 @@ Quality:
         
  (found in red, blue, green and rainbow chests)
 * 
-"),
-new ItemData(425, @"
+") },
+{ 425, new ItemData(425, @"
 Heart Purse
 ""Form Begets Function""
 ItemID: 425
@@ -5725,8 +5743,8 @@ Quality:
         
  (found in red, blue, green and rainbow chests)
 * 
-"),
-new ItemData(440, @"
+") },
+{ 440, new ItemData(440, @"
 Ruby Bracelet
 ""Thrown Guns Explode""
 ItemID: 440
@@ -5735,8 +5753,8 @@ Type: Passive
 Quality:
          (found in brown chests)
 * 
-"),
-new ItemData(407, @"
+") },
+{ 407, new ItemData(407, @"
 Sixth Chamber
 ""Blessing Of Kaliber""
 ItemID: 407
@@ -5748,8 +5766,8 @@ Type: Passive
 Quality:
          (found in red and rainbow chests)
 * 
-"),
-new ItemData(409, @"
+") },
+{ 409, new ItemData(409, @"
 Busted Television
 ""Broken And Heavy""
 ItemID: 409
@@ -5760,8 +5778,8 @@ Only found in the elevator shaft of the Gungeon Proper (Chamber #2) after the sh
 Type: Active
 Quality: unknown
 * 
-"),
-new ItemData(411, @"
+") },
+{ 411, new ItemData(411, @"
 Coolant Leak
 ""Don't Overheat!""
 ItemID: 411
@@ -5771,8 +5789,8 @@ Can only be obtained by The Robot character as its starting active item
 Type: Active
 Quality: unknown
 * 
-"),
-new ItemData(364, @"
+") },
+{ 364, new ItemData(364, @"
 Heart of Ice
 ""That's Cold""
 ItemID: 364
@@ -5785,8 +5803,8 @@ Quality:
         
  (found in all types of chest except brown)
 * 
-"),
-new ItemData(255, @"
+") },
+{ 255, new ItemData(255, @"
 Ancient Hero's Bandana
 ""Limitless""
 ItemID: 255
@@ -5796,8 +5814,8 @@ Type: Passive
 Quality:
          (found in black and rainbow chests)
 * 
-"),
-new ItemData(436, @"
+") },
+{ 436, new ItemData(436, @"
 Bloodied Scarf
 ""Blink Away""
 ItemID: 436
@@ -5808,8 +5826,8 @@ Type: Passive
 Quality:
          (found in green and rainbow chests)
 * 
-"),
-new ItemData(437, @"
+") },
+{ 437, new ItemData(437, @"
 Muscle Relaxant
 ""Loosen Up""
 ItemID: 437
@@ -5818,8 +5836,8 @@ Type: Passive
 Quality:
          (found in green and rainbow chests)
 * 
-"),
-new ItemData(500, @"
+") },
+{ 500, new ItemData(500, @"
 Hip Holster
 ""Quickdraw""
 ItemID: 500
@@ -5828,8 +5846,8 @@ Type: Passive
 Quality:
          (found in green and rainbow chests)
 * 
-"),
-new ItemData(311, @"
+") },
+{ 311, new ItemData(311, @"
 Clone
 ""The Real Me""
 ItemID: 311
@@ -5840,8 +5858,8 @@ Type: Passive
 Quality:
          (found in black and rainbow chests)
 * 
-"),
-new ItemData(452, @"
+") },
+{ 452, new ItemData(452, @"
 Sponge
 ""Godliness""
 ItemID: 452
@@ -5852,8 +5870,8 @@ Type: Passive
 Quality:
          (found in blue chests)
 * 
-"),
-new ItemData(453, @"
+") },
+{ 453, new ItemData(453, @"
 Gas Mask
 ""Breathe Deep""
 ItemID: 453
@@ -5862,8 +5880,8 @@ Type: Passive
 Quality:
          (found in brown chests)
 * 
-"),
-new ItemData(454, @"
+") },
+{ 454, new ItemData(454, @"
 Hazmat Suit
 ""Safety Protocol""
 ItemID: 454
@@ -5873,8 +5891,8 @@ Type: Passive
 Quality:
          (found in green and rainbow chests)
 * 
-"),
-new ItemData(487, @"
+") },
+{ 487, new ItemData(487, @"
 Book of Chest Anatomy
 ""Controlled Demolition""
 ItemID: 487
@@ -5884,8 +5902,8 @@ Type: Passive
 Quality:
          (found in green and rainbow chests)
 * 
-"),
-new ItemData(489, @"
+") },
+{ 489, new ItemData(489, @"
 Gun Soul
 ""YOU DEFEATED""
 ItemID: 489
@@ -5900,8 +5918,8 @@ Type: Passive
 Quality:
          (found in red and rainbow chests)
 * 
-"),
-new ItemData(166, @"
+") },
+{ 166, new ItemData(166, @"
 Shelleton Key
 ""Locks Are Dead To You""
 ItemID: 166
@@ -5912,8 +5930,8 @@ Type: Passive
 Quality:
          (found in black and rainbow chests)
 * 
-"),
-new ItemData(490, @"
+") },
+{ 490, new ItemData(490, @"
 Brick of Cash
 ""Secrets Of The Masons""
 ItemID: 490
@@ -5922,8 +5940,8 @@ Type: Passive
 Quality:
          (found in green and rainbow chests)
 * 
-"),
-new ItemData(491, @"
+") },
+{ 491, new ItemData(491, @"
 Wingman
 ""Got Your Back""
 ItemID: 491
@@ -5933,8 +5951,8 @@ Type: Passive
 Quality:
          (found in red and rainbow chests)
 * 
-"),
-new ItemData(492, @"
+") },
+{ 492, new ItemData(492, @"
 Wolf
 ""Junior""
 ItemID: 492
@@ -5944,8 +5962,8 @@ Type: Passive
 Quality:
          (found in green and rainbow chests)
 * 
-"),
-new ItemData(300, @"
+") },
+{ 300, new ItemData(300, @"
 Dog
 ""Junior II""
 ItemID: 300
@@ -5957,8 +5975,8 @@ Type: Passive
 Quality:
          (found in brown chests)
 * 
-"),
-new ItemData(249, @"
+") },
+{ 249, new ItemData(249, @"
 Owl
 ""Hoots And More""
 ItemID: 249
@@ -5968,8 +5986,8 @@ Type: Passive
 Quality:
          (found in black and rainbow chests)
 * 
-"),
-new ItemData(301, @"
+") },
+{ 301, new ItemData(301, @"
 Super Space Turtle
 ""Hero From Space""
 ItemID: 301
@@ -5979,8 +5997,8 @@ Type: Passive
 Quality:
          (found in green and rainbow chests)
 * turtle bro, turtlebro
-"),
-new ItemData(318, @"
+") },
+{ 318, new ItemData(318, @"
 R2G2
 ""Gunmech Robot""
 ItemID: 318
@@ -5990,8 +6008,8 @@ Type: Passive
 Quality:
          (found in black and rainbow chests)
 * 
-"),
-new ItemData(442, @"
+") },
+{ 442, new ItemData(442, @"
 Badge
 ""By The Book""
 ItemID: 442
@@ -6004,8 +6022,8 @@ Type: Passive
 Quality:
          (found in red and rainbow chests)
 * 
-"),
-new ItemData(232, @"
+") },
+{ 232, new ItemData(232, @"
 Space Friend
 ""A Friend From The Space""
 ItemID: 232
@@ -6015,8 +6033,8 @@ Type: Passive
 Quality:
          (found in green and rainbow chests)
 * 
-"),
-new ItemData(451, @"
+") },
+{ 451, new ItemData(451, @"
 Pig
 ""Shifty""
 ItemID: 451
@@ -6026,8 +6044,8 @@ Type: Passive
 Quality:
          (found in red and rainbow chests)
 * 
-"),
-new ItemData(461, @"
+") },
+{ 461, new ItemData(461, @"
 Blank Companion's Ring
 ""He Tries""
 ItemID: 461
@@ -6037,8 +6055,8 @@ Recharge time: 10 seconds
 Quality:
          (found in red and rainbow chests)
 * 
-"),
-new ItemData(493, @"
+") },
+{ 493, new ItemData(493, @"
 Briefcase of Cash
 ""Avarice""
 ItemID: 493
@@ -6048,8 +6066,8 @@ Type: Passive
 Quality:
          (found in red and rainbow chests)
 * 
-"),
-new ItemData(494, @"
+") },
+{ 494, new ItemData(494, @"
 Galactic Medal of Valor
 ""Courage Increased""
 ItemID: 494
@@ -6061,8 +6079,8 @@ Type: Passive
 Quality:
          (found in green and rainbow chests)
 * 
-"),
-new ItemData(434, @"
+") },
+{ 434, new ItemData(434, @"
 Bullet Idol
 ""Vengeful Spirit""
 ItemID: 434
@@ -6071,8 +6089,8 @@ Type: Passive
 Quality:
          (found in green and rainbow chests)
 * 
-"),
-new ItemData(271, @"
+") },
+{ 271, new ItemData(271, @"
 Riddle of Lead
 ""This You Can Trust""
 ItemID: 271
@@ -6087,8 +6105,8 @@ Type: Passive
 Quality:
          (found in black and rainbow chests)
 * 
-"),
-new ItemData(439, @"
+") },
+{ 439, new ItemData(439, @"
 Bracket Key
 ""`debugkill""
 ItemID: 439
@@ -6099,8 +6117,8 @@ Type: Active
 Quality:
          (found in black and rainbow chests)
 * 
-"),
-new ItemData(499, @"
+") },
+{ 499, new ItemData(499, @"
 Elder Blank
 ""Excommunicate Bullets""
 ItemID: 499
@@ -6110,8 +6128,8 @@ Type: Active
 Quality:
          (found in green and rainbow chests)
 * 
-"),
-new ItemData(127, @"
+") },
+{ 127, new ItemData(127, @"
 Junk
 ""Next Time Use A Key""
 ItemID: 127
@@ -6123,8 +6141,8 @@ When playing as The Robot, each piece of Junk increases damage by 5%
 Type: Passive
 Quality: unknown
 * 
-"),
-new ItemData(148, @"
+") },
+{ 148, new ItemData(148, @"
 Lies
 ""Next Time Tell The Truth""
 ItemID: 148
@@ -6136,8 +6154,8 @@ Lies also works to upgrade Ser Junkan's level
 Type: Passive
 Quality: unknown
 * 
-"),
-new ItemData(276, @"
+") },
+{ 276, new ItemData(276, @"
 Spice
 ""A tantalizing cube of power""
 ItemID: 276
@@ -6151,8 +6169,8 @@ Type: Active
 Quality:
          (found in red and rainbow chests)
 * 
-"),
-new ItemData(607, @"
+") },
+{ 607, new ItemData(607, @"
 Clown Mask
 ""Anonymity Aid""
 ItemID: 607
@@ -6168,8 +6186,8 @@ Type: Passive
 Quality:
          (found in green and rainbow chests)
 * 
-"),
-new ItemData(625, @"
+") },
+{ 625, new ItemData(625, @"
 Drill
 ""Sawgeant""
 ItemID: 625
@@ -6182,8 +6200,8 @@ Type: Active
 Quality:
          (found in brown chests)
 * 
-"),
-new ItemData(605, @"
+") },
+{ 605, new ItemData(605, @"
 Loot Bag
 ""Doesn't Float""
 ItemID: 605
@@ -6197,8 +6215,8 @@ Type: Passive
 Quality:
          (found in blue chests)
 * 
-"),
-new ItemData(529, @"
+") },
+{ 529, new ItemData(529, @"
 Battle Standard
 ""Set your Own!""
 ItemID: 529
@@ -6208,8 +6226,8 @@ UNLOCK: Unlock this item by having two companions at once
 Type: Passive
 Quality:  (found in brown chests)
 * 
-"),
-new ItemData(524, @"
+") },
+{ 524, new ItemData(524, @"
 Bloody 9mm
 ""Be Realistic""
 ItemID: 524
@@ -6219,8 +6237,8 @@ UNLOCK: Unlock this item by using the Lament Configurum item 20 times
 Type: Passive
 Quality:  (found in green and rainbow chests)
 * 
-"),
-new ItemData(558, @"
+") },
+{ 558, new ItemData(558, @"
 Bottle
 ""Heart Container""
 ItemID: 558
@@ -6229,8 +6247,8 @@ Using the bottle again will consume the contents
 Type: Active
 Quality:  (found in brown chests)
 * 
-"),
-new ItemData(521, @"
+") },
+{ 521, new ItemData(521, @"
 Chance Bullets
 ""Good RNG""
 ItemID: 521
@@ -6239,8 +6257,8 @@ Has no effect if you only have one gun
 Type: Passive
 Quality:  (found in green and rainbow chests)
 * 
-"),
-new ItemData(573, @"
+") },
+{ 573, new ItemData(573, @"
 Chest Teleporter
 ""Zap""
 ItemID: 573
@@ -6250,8 +6268,8 @@ UNLOCK: Unlock this gun by killing The Robot's past
 Type: Active
 Quality:  (found in red and rainbow chests)
 * 
-"),
-new ItemData(569, @"
+") },
+{ 569, new ItemData(569, @"
 Chaos Bullets
 ""Taste The Rainbow""
 ItemID: 569
@@ -6260,8 +6278,8 @@ UNLOCK: Unlock this item by killing High Dragun in challenge mode, or by failing
 Type: Passive
 Quality:  (found in red and rainbow chests)
 * 
-"),
-new ItemData(527, @"
+") },
+{ 527, new ItemData(527, @"
 Charming Rounds
 ""Made With Love""
 ItemID: 527
@@ -6270,8 +6288,8 @@ UNLOCK: Unlock this item by purchasing it from Doug for 14 Hegemony Credits
 Type: Passive
 Quality:  (found in green and rainbow chests)
 * 
-"),
-new ItemData(572, @"
+") },
+{ 572, new ItemData(572, @"
 Chicken Flute
 ""Fowl Play""
 ItemID: 572
@@ -6281,8 +6299,8 @@ UNLOCK: Unlock this item by killing The Bullet's past
 Type: Passive
 Quality:  (found in green and rainbow chests)
 * 
-"),
-new ItemData(571, @"
+") },
+{ 571, new ItemData(571, @"
 Cursed Bullets
 ""Too Spooky""
 ItemID: 571
@@ -6292,8 +6310,8 @@ UNLOCK: Unlock this item by defeating the shadow magician 5 times
 Type: Passive
 Quality:  (found in blue chests)
 * 
-"),
-new ItemData(531, @"
+") },
+{ 531, new ItemData(531, @"
 Flak Bullets
 ""Catch Some!""
 ItemID: 531
@@ -6303,8 +6321,8 @@ UNLOCK: Unlock this item by purchasing it from Doug for 28 Hegemony Credits
 Type: Passive
 Quality:  (found in blue chests)
 * 
-"),
-new ItemData(564, @"
+") },
+{ 564, new ItemData(564, @"
 Full Metal Jacket
 ""Automated Defenses""
 ItemID: 564
@@ -6313,8 +6331,8 @@ Will work and negate contact and fall damage
 Type: Passive
 Quality:  (found in green and rainbow chests)
 * alchemist
-"),
-new ItemData(532, @"
+") },
+{ 532, new ItemData(532, @"
 Gilded Bullets
 ""The Gun Percent""
 ItemID: 532
@@ -6325,8 +6343,8 @@ UNLOCK: Unlock this item by purchasing all items and guns from Doug
 Type: Passive
 Quality:  (found in green and rainbow chests)
 * 
-"),
-new ItemData(565, @"
+") },
+{ 565, new ItemData(565, @"
 Glass Guon Stone
 ""Fleeting Defense""
 ItemID: 565
@@ -6338,8 +6356,8 @@ After unlocking, will frequently appear in shops and drop after room clears
 UNLOCK: Unlock this item by using a glass shrine
 Type: Passive
 * 
-"),
-new ItemData(568, @"
+") },
+{ 568, new ItemData(568, @"
 Helix Bullets
 ""Praise Be""
 ItemID: 568
@@ -6349,8 +6367,8 @@ UNLOCK: Unlock this item by purchasing it from Doug for 16 Hegemony Credits
 Type: Passive
 Quality:  (found in green and rainbow chests)
 * 
-"),
-new ItemData(580, @"
+") },
+{ 580, new ItemData(580, @"
 Ser Junkan
 ""Next Time... Who Is He?""
 ItemID: 580
@@ -6368,8 +6386,8 @@ UNLOCK: Unlock this item by upgrading Ser Junkan with 3 or more Junk and then ki
 Type: Passive
 Quality:  (found in blue chests)
 * 
-"),
-new ItemData(525, @"
+") },
+{ 525, new ItemData(525, @"
 Lament Configurum
 ""Shellraiser""
 ItemID: 525
@@ -6382,8 +6400,8 @@ UNLOCK: Unlock this item by rescuing Daisuke
 Type: Active
 Quality:  (found in green and rainbow chests)
 * 
-"),
-new ItemData(533, @"
+") },
+{ 533, new ItemData(533, @"
 Magic Bullets
 ""Sufficiently Advanced""
 ItemID: 533
@@ -6392,8 +6410,8 @@ UNLOCK: Unlock this item by purchasing it from Doug for 18 Hegemony Credits
 Type: Passive
 Quality:  (found in green and rainbow chests)
 * 
-"),
-new ItemData(536, @"
+") },
+{ 536, new ItemData(536, @"
 Relodestone
 ""Magunetic North""
 ItemID: 536
@@ -6402,8 +6420,8 @@ Reload times are reduced by half while held
 Type: Active
 Quality:  (found in black and rainbow chests)
 * reloadstone
-"),
-new ItemData(530, @"
+") },
+{ 530, new ItemData(530, @"
 Remote Bullets
 ""The Unseen Hand""
 ItemID: 530
@@ -6412,8 +6430,8 @@ Fired bullets can be guided by your crosshair
 Type: Passive
 Quality:  (found in blue chests)
 * 
-"),
-new ItemData(567, @"
+") },
+{ 567, new ItemData(567, @"
 Roll Bomb
 ""Power Charge""
 ItemID: 567
@@ -6423,8 +6441,8 @@ UNLOCK: Unlock this item by purchasing it from Doug for 12 Hegemony Credits
 Type: Passive
 Quality:  (found in blue chests)
 * 
-"),
-new ItemData(538, @"
+") },
+{ 538, new ItemData(538, @"
 Silver Bullets
 ""Blessed Metal""
 ItemID: 538
@@ -6434,8 +6452,8 @@ UNLOCK: Unlock this item by purchasing it from Doug for 8 Hegemony Credits
 Type: Passive
 Quality:  (found in blue chests)
 * 
-"),
-new ItemData(526, @"
+") },
+{ 526, new ItemData(526, @"
 Springheel Boots
 ""Double Jump""
 ItemID: 526
@@ -6445,8 +6463,8 @@ UNLOCK: Unlock this item by killing 15 Keybullet kin
 Type: Passive
 Quality:  (found in brown chests)
 * 
-"),
-new ItemData(523, @"
+") },
+{ 523, new ItemData(523, @"
 Stout Bullets
 ""Up Close And Personal""
 ItemID: 523
@@ -6457,8 +6475,8 @@ UNLOCK: Unlock this item by purchasing it from Doug for 12 Hegemony Credits
 Type: Passive
 Quality:  (found in green and rainbow chests)
 * 
-"),
-new ItemData(449, @"
+") },
+{ 449, new ItemData(449, @"
 Teleporter Prototype
 ""Teleport!?""
 ItemID: 449
@@ -6469,8 +6487,8 @@ UNLOCK: Unlock this item by purchasing it from Doug for 22 Hegemony Credits
 Type: Active
 Quality:  (found in green and rainbow chests)
 * 
-"),
-new ItemData(570, @"
+") },
+{ 570, new ItemData(570, @"
 Yellow Chamber
 ""The Jammed Thing""
 ItemID: 570
@@ -6482,8 +6500,8 @@ UNLOCK: Unlock this item by killing 10 'Confirmed' enemies (the cloaked bullet k
 Type: Passive
 Quality:  (found in black and rainbow chests)
 * 
-"),
-new ItemData(528, @"
+") },
+{ 528, new ItemData(528, @"
 Zombie Bullets
 ""Unfinished Business""
 ItemID: 528
@@ -6491,8 +6509,8 @@ Occasionally refunds ammo when bullets miss
 Type: Passive
 Quality:  (found in blue chests)
 * 
-"),
-new ItemData(664, @"
+") },
+{ 664, new ItemData(664, @"
 Baby Good Mimic
 ""Imitation Love""
 ItemID: 664
@@ -6502,8 +6520,8 @@ Can transform into one of your other familiars, if you have any
 Type: Passive
 Quality:  (found in green and rainbow chests)
 * 
-"),
-new ItemData(630, @"
+") },
+{ 630, new ItemData(630, @"
 Bumbullets
 ""Bumblecore""
 ItemID: 630
@@ -6513,8 +6531,8 @@ UNLOCK: Unlock this item by purchasing it from Doug for 26 Hegemony Credits
 Type: Passive
 Quality:  (found in green and rainbow chests)
 * 
-"),
-new ItemData(634, @"
+") },
+{ 634, new ItemData(634, @"
 Crisis Stone
 ""Reload. Reload. Reload.""
 ItemID: 634
@@ -6523,8 +6541,8 @@ UNLOCK: Unlock this item by defeating the High Dragun boss in Turbo Mode
 Type: Passive
 Quality:  (found in red and rainbow chests)
 * 
-"),
-new ItemData(643, @"
+") },
+{ 643, new ItemData(643, @"
 Daruma
 ""Good Fortune""
 ItemID: 643
@@ -6533,8 +6551,8 @@ UNLOCK: Unlock this item by getting grabbed by a Gripmaster (the hand enemies li
 Type: Active
 Quality:  (found in green and rainbow chests)
 * 
-"),
-new ItemData(638, @"
+") },
+{ 638, new ItemData(638, @"
 Devolver Rounds
 ""Two Steps Back""
 ItemID: 638
@@ -6544,8 +6562,8 @@ UNLOCK: Unlock this item by purchasing it from Doug for 20 Hegemony Credits
 Type: Passive
 Quality:  (found in green and rainbow chests)
 * 
-"),
-new ItemData(641, @"
+") },
+{ 641, new ItemData(641, @"
 Gold Junk
 ""One Man's Trash""
 ItemID: 641
@@ -6556,8 +6574,8 @@ UNLOCK: Unlock this item by destroying either a red, black or rainbow chest
 Type: Passive
 Quality: 
 * 
-"),
-new ItemData(631, @"
+") },
+{ 631, new ItemData(631, @"
 Holey Grail
 ""Withered Vessel""
 ItemID: 631
@@ -6567,8 +6585,8 @@ UNLOCK: Unlock this item by defeating the Advanced Dragun boss
 Type: Passive
 Quality:  (found in brown chests)
 * 
-"),
-new ItemData(655, @"
+") },
+{ 655, new ItemData(655, @"
 Hungry Bullets
 ""Hungry Hungry""
 ItemID: 655
@@ -6577,8 +6595,8 @@ UNLOCK: Unlock this item by getting caught by a Tarnisher (the barrel like enemi
 Type: Passive
 Quality:  (found in red and rainbow chests)
 * 
-"),
-new ItemData(665, @"
+") },
+{ 665, new ItemData(665, @"
 Macho Brace
 ""Value for Effort""
 ItemID: 665
@@ -6587,8 +6605,8 @@ UNLOCK: Unlock this item by buying from Synergrace 3 times (the lady who sells s
 Type: Passive
 Quality:  (found in blue chests)
 * nice
-"),
-new ItemData(662, @"
+") },
+{ 662, new ItemData(662, @"
 Partially-Eaten Cheese
 ""Aged Almost 40 Years""
 ItemID: 662
@@ -6599,8 +6617,8 @@ UNLOCK: Unlock this item by finding it in a chest after beating the Resourceful 
 Type: Active
 Quality:  (found in red and rainbow chests)
 * 
-"),
-new ItemData(644, @"
+") },
+{ 644, new ItemData(644, @"
 Portable Table Device
 ""Know when To Fold 'Em""
 ItemID: 644
@@ -6611,8 +6629,8 @@ UNLOCK: Unlock this item by dodge-rolling over a lot of tables
 Type: Active
 Quality:  (found in brown chests)
 * 
-"),
-new ItemData(627, @"
+") },
+{ 627, new ItemData(627, @"
 Platinum Bullets
 ""Over One Million Served""
 ItemID: 627
@@ -6622,8 +6640,8 @@ UNLOCK: Unlock this item by purchasing it from Ox and Cadence for 200 Hegemony C
 Type: Passive
 Quality:  (found in black and rainbow chests)
 * 
-"),
-new ItemData(667, @"
+") },
+{ 667, new ItemData(667, @"
 Rat Boots
 ""Hover Craft""
 ItemID: 667
@@ -6633,8 +6651,8 @@ UNLOCK: Unlock this item by finding it in a chest after defeating the Resourcefu
 Type: Passive
 Quality:  (found in blue chests)
 * 
-"),
-new ItemData(663, @"
+") },
+{ 663, new ItemData(663, @"
 Resourceful Sack
 ""Pack Rat's Rat Pack""
 ItemID: 663
@@ -6643,8 +6661,8 @@ When used, the sack will use all stolen bullets and fires a cheese that does dam
 Type: Active
 Quality:  (found in red and rainbow chests)
 * 
-"),
-new ItemData(463, @"
+") },
+{ 463, new ItemData(463, @"
 Ring of the Resourceful Rat
 ""Fufufufufufu""
 ItemID: 463
@@ -6655,8 +6673,8 @@ UNLOCK: Unlock this item by defeating the first 2 phases of the Resourceful Rat 
 Type: Passive
 Quality:  (found in green and rainbow chests)
 * 
-"),
-new ItemData(636, @"
+") },
+{ 636, new ItemData(636, @"
 Snowballets
 ""Powder Power""
 ItemID: 636
@@ -6665,8 +6683,8 @@ UNLOCK: Unlock this item by purchasing it from Doug for 26 Hegemony Credits
 Type: Passive
 Quality:  (found in red and rainbow chests)
 * 
-"),
-new ItemData(632, @"
+") },
+{ 632, new ItemData(632, @"
 Turkey
 ""Triple Tap""
 ItemID: 632
@@ -6676,8 +6694,8 @@ UNLOCK: Unlock this item by using the Companion shrine twice
 Type: Passive
 Quality:  (found in blue chests)
 * 
-"),
-new ItemData(640, @"
+") },
+{ 640, new ItemData(640, @"
 Vorpal Bullets
 ""Through and Through""
 ItemID: 640
@@ -6686,8 +6704,8 @@ UNLOCK: Unlock this item by purchasing it from Doug for 26 Hegemony Credits
 Type: Passive
 Quality:  (found in red and rainbow chests)
 * 
-"),
-new ItemData(637, @"
+") },
+{ 637, new ItemData(637, @"
 Weird Egg
 ""Miracle of Gun""
 ItemID: 637
@@ -6699,24 +6717,6 @@ UNLOCK: Unlock this item by entering the Resourceful Rat's Lair for the first ti
 Type: Active
 Quality:  (found in brown chests)
 * northernlion, northern lion, nlss, eggfather, scum
-"),
+") },
 };
-
-    private static Dictionary<int, ItemData> dictionary;
-
-    public static Dictionary<int, ItemData> Items
-    {
-        get
-        {
-            if(dictionary == null)
-            {
-                dictionary = new Dictionary<int, ItemData>();
-                foreach(var item in items)
-                {
-                    dictionary.Add(item.id, item);
-                }
-            }
-            return dictionary;
-        }
-    }
 }
