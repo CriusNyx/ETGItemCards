@@ -10,7 +10,7 @@ This is time consuming, and slows down the pace of an otherwise very quick game.
 
 This mod is intended to fix that by causing item cards to pop up on screen whenever the player is looking at a gun they would like to pick up.
 
-## Setup Guide for Noobs
+# Setup Guide for Noobs
 ### Download and Install Mod The Gungeon
 Mod the Gungeon is an API for creating Enter The Gungeon Mods.
 This mod would not exist without it.
@@ -46,11 +46,11 @@ DO NOT UNZIP THE FOLDER
 
 Now just Delete mods.txt, and start Enter The Gungeon
 
-## Requirements
+# Requirements for Programmers
 This mod is build on Mod The Gungeon.
 In order to use this mod, Mod The Gungeon must be installed in the Enter The Gungeon directory.
 
-## Compiling
+# Compiling
 To compile this mod, the dependencies listed in the Dependencies folder will need to be acquired.
 The majority of them can be acquired from the Enter The Gungeon installation directory.
 
