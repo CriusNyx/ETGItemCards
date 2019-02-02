@@ -70,10 +70,24 @@ namespace ETGItemCards
                 //update the label to display item cards
                 try
                 {
-                    label.Text = GetItemCard();
+                    PlayerController player = Gungeon.Game.PrimaryPlayer;
+                    bool draw = false;
+                    if(player != null)
+                    {
+                        if(!player.IsInCombat)
+                        {
+                            draw = true;
+                        }
+                    }
 
-                    label.IsVisible = false;
-                    label.IsVisible = true;
+                    if(draw)
+                    {
+                        label.Text = GetItemCard();
+                    }
+                    else
+                    {
+                        label.Text = "";
+                    }
                 }
                 catch(System.Exception e)
                 {
