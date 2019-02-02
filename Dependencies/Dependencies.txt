@@ -1,0 +1,13 @@
+The following DLL's will need to be aqured to build this project
+
+From Enter the Guneon directory
+Assembly-CSharp.dll (unmodded version required)
+
+From MonoMod
+MonoMod.RuntimeDetour.Dll
+MonoMod.Utils.dll
+
+From Enter The Gungeon Modded
+Assembly-CSharp.Base.mm.dll
+UnityEngine.base.mm.dll
+UnityEngine.CoreModule.dll
