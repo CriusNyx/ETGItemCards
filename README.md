@@ -5,7 +5,7 @@
 # Goal
 This mod adds item cards to Enter The Gungeon.
 
-Many Enter The Gungeon player, often need to pause, and look at Wikipedia articles, or other online resource to find information about items while playing.
+Many Enter The Gungeon players often need to pause and look at Wikipedia articles or other online resource to find information about items while playing.
 This is time consuming, and slows down the pace of an otherwise very quick game.
 
 This mod is intended to fix that by causing item cards to pop up on screen whenever the player is looking at a gun they would like to pick up.
@@ -45,6 +45,9 @@ Inside that folder there is a folder called mods. Copy the zip file you download
 DO NOT UNZIP THE FOLDER
 
 Now just Delete mods.txt, and start Enter The Gungeon
+
+
+For help modding, check out the Enter The Gungeon discord channel. They helped me out making this mod, and they can help you too.
 
 # Requirements for Programmers
 This mod is build on Mod The Gungeon.
