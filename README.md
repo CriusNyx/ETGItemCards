@@ -33,7 +33,7 @@ The easiest way to do this is by downloading ETGMod.Installer from Mod The Gunge
 3. Click the Install ETGMod button in the lower right
 DO NOT CHANGE ANY OF THE SETTINGS IN THE ADVANCED SECTION UNLESS YOU KNOW WHAT YOU'RE DOING
 
-It may take a while to finish installing. If you are having difficulties, you can reach out to the Enter The Gungeon discord for assisstance
+It may take a while to finish installing. If you are having difficulties, you can reach out to the Enter The Gungeon discord for assistance.
 
 If you mess up, you can start over by uninstalling and reinstalling Enter The Gungeon on Steam.
 
@@ -50,7 +50,7 @@ Now just Delete mods.txt, and start Enter The Gungeon
 For help modding, check out the Enter The Gungeon discord channel. They helped me out making this mod, and they can help you too.
 
 # Alternate Formats
-Item Cards supports different formats now
+Item Cards supports different formats now.
 Formats can be changed using the command: SetCardFormat format
 
 Two formats are included:
