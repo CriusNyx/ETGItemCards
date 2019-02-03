@@ -61,6 +61,8 @@
   <ItemGroup>
     <Compile Include="DebugFunctions.cs" />
     <Compile Include="ETGItemCards.cs" />
+    <Compile Include="ETGSettings.cs" />
+    <Compile Include="ItemCardFormat.cs" />
     <Compile Include="ItemData.cs" />
     <Compile Include="PickupTracker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

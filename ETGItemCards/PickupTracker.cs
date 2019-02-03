@@ -6,6 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using System.Text;
+using System.Diagnostics;
 
 namespace ETGItemCards
 {
@@ -104,7 +105,7 @@ namespace ETGItemCards
         private static string GetItemCard()
         {
             //Display title
-            string text = "Item Card\n";
+            string text = "";
 
             //Flag to toggle display
             bool display = false;
@@ -190,7 +191,7 @@ namespace ETGItemCards
             //Get item data from item card
             if(ItemData.Items.ContainsKey(id))
             {
-                output += ItemData.Items[id].text;
+                output = ItemData.Items[id].ToString();
                 return output;
             }
             else

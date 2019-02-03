@@ -49,6 +49,14 @@ Now just Delete mods.txt, and start Enter The Gungeon
 
 For help modding, check out the Enter The Gungeon discord channel. They helped me out making this mod, and they can help you too.
 
+# Alternate Formats
+Item Cards supports different formats now
+Formats can be changed using the command: SetCardFormat format
+
+Two formats are included:
+* SetCardFormat lite
+* SetCardFormat full
+
 # Requirements for Programmers
 This mod is build on Mod The Gungeon.
 In order to use this mod, Mod The Gungeon must be installed in the Enter The Gungeon directory.

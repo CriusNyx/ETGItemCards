@@ -27,6 +27,9 @@ namespace ETGItemCards
             //Debug function are undocumented, use at your own risk
             Commands.AddGroup("loadDebugFunctions", DebugFunctions.LoadDebugFunctions);
 
+            //command to set desired format for item cards
+            Commands.AddGroup("SetCardFormat", SetCardFormat);
+
             //Create a hook for the GameUIRoot class for running this mods update loop
             MethodBase gameUIUpdate = typeof(TimeInvariantMonoBehaviour).GetMethod("Update", (BindingFlags)(-1));
             MethodInfo gameUIUpdateHook = typeof(PickupTracker).GetMethod("UpdateHook", (BindingFlags)(-1));
@@ -40,6 +43,51 @@ namespace ETGItemCards
 
             //Log that the mod loaded, for players
             Log("Item Cards Loaded");
+        }
+
+        public static void SetCardFormat(string[] args)
+        {
+            ETGSettings.Save();
+            if(args == null || args.Length < 1)
+            {
+                Log("You must enter a value");
+            }
+            switch(args[0])
+            {
+                case "lite":
+                case "LITE":
+                case "Lite":
+                {
+
+                    var card = new ItemCardFormat(ItemCardFormat.LITE);
+                    ETGSettings.SetCurrentFormat(card);
+                    break;
+                }
+                case "full":
+                case "FULL":
+                case "Full":
+                {
+                    var card = new ItemCardFormat(ItemCardFormat.FULL);
+                    ETGSettings.SetCurrentFormat(card);
+                    break;
+                }
+                default:
+                    try
+                    {
+                        string text = File.ReadAllText("mods/ItemCardFormats/" + args[0]);
+                        var format = new ItemCardFormat(text);
+                        ETGSettings.SetCurrentFormat(format);
+                    }
+                    catch(System.IO.IOException e)
+                    {
+                        Log("Failed to load file \"" + args[0] + ".\"\n Format files should be installed in mods/ItemCardFormats");
+                    }
+                    catch(ItemCardFormat.ItemCardFormatException e)
+                    {
+                        Log("Invalid Format");
+                    }
+                    break;
+            }
         }
 
         public override void Exit() { }
