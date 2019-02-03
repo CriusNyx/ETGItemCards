@@ -47,10 +47,13 @@ namespace ETGItemCards
 
         public static void SetCardFormat(string[] args)
         {
+            bool success = true;
+
             ETGSettings.Save();
             if(args == null || args.Length < 1)
             {
                 Log("You must enter a value");
+                success = false;
             }
             switch(args[0])
             {
@@ -74,19 +77,26 @@ namespace ETGItemCards
                 default:
                     try
                     {
-                        string text = File.ReadAllText("mods/ItemCardFormats/" + args[0]);
+                        string text = File.ReadAllText("mods/ItemCardFormats/" + args[0] + ".txt");
                         var format = new ItemCardFormat(text);
                         ETGSettings.SetCurrentFormat(format);
                     }
                     catch(System.IO.IOException e)
                     {
                         Log("Failed to load file \"" + args[0] + ".\"\n Format files should be installed in mods/ItemCardFormats");
+                        success = false;
                     }
                     catch(ItemCardFormat.ItemCardFormatException e)
                     {
                         Log("Invalid Format");
+                        success = false;
                     }
                     break;
+            }
+            if(success)
+            {
+                Log("Item card format set:");
+                Log(ETGSettings.CurrentFormat.format);
             }
         }
 

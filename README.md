@@ -57,6 +57,10 @@ Two formats are included:
 * SetCardFormat lite
 * SetCardFormat full
 
+Additional formats can by adding a new format file to "Enter The Gungeon/Mods/ItemCardFormats/MyFormat.txt" and loaded using SetCardFormat MyFormat
+
+Example formats can be found in the mods zip file.
+
 # Requirements for Programmers
 This mod is build on Mod The Gungeon.
 In order to use this mod, Mod The Gungeon must be installed in the Enter The Gungeon directory.

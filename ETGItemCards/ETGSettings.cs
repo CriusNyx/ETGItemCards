@@ -10,7 +10,7 @@ namespace ETGItemCards
 {
     public class ETGSettings
     {
-        private const string filepath = "C:/Mods/ETGItemCards.xml";
+        private const string filepath = "Mods/ETGItemCards.xml";
 
         private static ETGSettings instance;
         private static ETGSettings Instance
